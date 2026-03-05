@@ -1,0 +1,91 @@
+# Customer Analysis Skill Definition
+# Reference: Thesis Section 3.3.2 — Reasoning Pillar, Skill: Customer Analysis
+#
+# Analyses customer concentration, revenue distribution, and segmentation
+# patterns from ERP transaction data.
+
+name: customer_analysis
+description: >
+  Analyse customer-level patterns: revenue concentration (Pareto/Herfindahl),
+  segmentation, payment behaviour, and retention indicators.
+version: "1.0"
+query_type: customer_analysis
+
+required_context:
+  - customer_analysis
+  - monthly_summaries
+  - business_metrics
+
+system_prompt: >
+  You are a customer analytics specialist for Greek SMEs. You analyse ERP
+  transaction data to identify customer concentration risks, revenue
+  distribution patterns, and segmentation insights. Be quantitative and
+  reference specific metrics. Output valid JSON.
+
+prompt_template: |
+  Based on the following ERP data context, analyse the customer portfolio.
+
+  === ERP DATA CONTEXT ===
+  {context}
+  === END CONTEXT ===
+
+  User Query: {query}
+
+  Produce a JSON response with exactly these fields:
+  {{
+    "total_customers": <number>,
+    "concentration_risk": "high|medium|low",
+    "herfindahl_index": <number between 0.0 and 1.0>,
+    "top_customer_share": <percentage>,
+    "segments": [
+      {{
+        "name": "segment_name",
+        "customer_count": <number>,
+        "revenue_share": <percentage>,
+        "characteristics": "description"
+      }}
+    ],
+    "payment_patterns": {{
+      "avg_days_to_pay": <number>,
+      "on_time_percentage": <percentage>
+    }},
+    "recommendations": ["recommendation1", "recommendation2"],
+    "narrative": "2-3 sentence customer analysis summary in Greek"
+  }}
+
+output_schema:
+  type: object
+  required:
+    - total_customers
+    - concentration_risk
+    - segments
+    - narrative
+  properties:
+    total_customers:
+      type: number
+    concentration_risk:
+      type: string
+      enum: [high, medium, low]
+    herfindahl_index:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+    top_customer_share:
+      type: number
+    segments:
+      type: array
+      items:
+        type: object
+    payment_patterns:
+      type: object
+    recommendations:
+      type: array
+      items:
+        type: string
+    narrative:
+      type: string
+
+parameters:
+  model_tier: fast
+  temperature: 0.0
+  max_retries: 2

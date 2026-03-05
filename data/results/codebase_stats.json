@@ -1,0 +1,295 @@
+{
+  "description": "Codebase statistics for AI Strategic Partner prototype (Chapter 4)",
+  "total_python_files": 81,
+  "total_loc": 13550,
+  "total_loc_excluding_tests": 9291,
+  "test_loc": 4259,
+  "per_directory": [
+    {
+      "directory": "picp/",
+      "python_files": 7,
+      "loc": 752,
+      "description": "PICP coordination protocol (core thesis contribution)"
+    },
+    {
+      "directory": "pillars/knowledge/",
+      "python_files": 4,
+      "loc": 569,
+      "description": "Knowledge Pillar (RAG, hybrid search, ChromaDB)"
+    },
+    {
+      "directory": "pillars/reasoning/",
+      "python_files": 4,
+      "loc": 699,
+      "description": "Reasoning Pillar (heuristic policy, skills)"
+    },
+    {
+      "directory": "pillars/simulation/",
+      "python_files": 4,
+      "loc": 778,
+      "description": "Simulation Pillar (Monte Carlo engine)"
+    },
+    {
+      "directory": "pillars/trust/",
+      "python_files": 5,
+      "loc": 1202,
+      "description": "Trust Pillar (scoring, SHAP, audit)"
+    },
+    {
+      "directory": "orchestrator/",
+      "python_files": 1,
+      "loc": 303,
+      "description": "Central orchestrator (K->R->S->T pipeline)"
+    },
+    {
+      "directory": "utils/",
+      "python_files": 2,
+      "loc": 219,
+      "description": "Utilities (LLM abstraction layer)"
+    },
+    {
+      "directory": "data/pipeline/",
+      "python_files": 4,
+      "loc": 545,
+      "description": "Data pipeline (ERP transformer, classifier)"
+    },
+    {
+      "directory": "config/",
+      "python_files": 2,
+      "loc": 46,
+      "description": "Configuration (Pydantic settings)"
+    },
+    {
+      "directory": "tests/unit/",
+      "python_files": 24,
+      "loc": 4098,
+      "description": "Unit tests"
+    },
+    {
+      "directory": "tests/integration/",
+      "python_files": 2,
+      "loc": 141,
+      "description": "Integration tests"
+    },
+    {
+      "directory": "experiments/",
+      "python_files": 17,
+      "loc": 3913,
+      "description": "Experiment scripts (Chapter 5)"
+    },
+    {
+      "directory": "scripts/",
+      "python_files": 2,
+      "loc": 162,
+      "description": "CLI scripts (ingestion, query runner)"
+    },
+    {
+      "directory": "tests/",
+      "python_files": 1,
+      "loc": 20,
+      "description": "Test fixtures (conftest.py)"
+    },
+    {
+      "directory": "pillars/__init__.py",
+      "python_files": 1,
+      "loc": 0,
+      "description": "Pillars package init"
+    },
+    {
+      "directory": "pillars/base.py",
+      "python_files": 1,
+      "loc": 103,
+      "description": "Pillar base class"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "fastapi",
+      "min_version": "0.104.0",
+      "group": "runtime",
+      "purpose": "REST API framework",
+      "installed_version": "0.109.2"
+    },
+    {
+      "name": "uvicorn",
+      "min_version": "0.24.0",
+      "group": "runtime",
+      "purpose": "ASGI server for FastAPI",
+      "installed_version": "0.27.1"
+    },
+    {
+      "name": "pydantic",
+      "min_version": "2.5.0",
+      "group": "runtime",
+      "purpose": "Data validation and settings",
+      "installed_version": "2.6.1"
+    },
+    {
+      "name": "pydantic-settings",
+      "min_version": "2.1.0",
+      "group": "runtime",
+      "purpose": "Environment-based configuration",
+      "installed_version": "2.2.1"
+    },
+    {
+      "name": "redis",
+      "min_version": "5.0.0",
+      "group": "runtime",
+      "purpose": "PICP message bus and distributed locking",
+      "installed_version": "5.0.1"
+    },
+    {
+      "name": "chromadb",
+      "min_version": "0.4.18",
+      "group": "runtime",
+      "purpose": "Vector database for RAG embeddings",
+      "installed_version": "1.5.0"
+    },
+    {
+      "name": "openai",
+      "min_version": "1.6.0",
+      "group": "runtime",
+      "purpose": "LLM and embedding API client",
+      "installed_version": "2.21.0"
+    },
+    {
+      "name": "rank-bm25",
+      "min_version": "0.2.2",
+      "group": "runtime",
+      "purpose": "BM25 lexical search for hybrid retrieval",
+      "installed_version": "0.2.2"
+    },
+    {
+      "name": "openpyxl",
+      "min_version": "3.1.0",
+      "group": "runtime",
+      "purpose": "Excel file parsing for ERP data",
+      "installed_version": "3.1.2"
+    },
+    {
+      "name": "pandas",
+      "min_version": "2.1.0",
+      "group": "runtime",
+      "purpose": "DataFrame operations for ERP transformation",
+      "installed_version": "2.2.0"
+    },
+    {
+      "name": "numpy",
+      "min_version": "1.26.0",
+      "group": "runtime",
+      "purpose": "Vectorized Monte Carlo simulation engine",
+      "installed_version": "1.26.4"
+    },
+    {
+      "name": "scipy",
+      "min_version": "1.11.0",
+      "group": "runtime",
+      "purpose": "Statistical tests (Wilcoxon, distributions)",
+      "installed_version": "1.17.0"
+    },
+    {
+      "name": "structlog",
+      "min_version": "23.2.0",
+      "group": "runtime",
+      "purpose": "Structured logging with correlation IDs",
+      "installed_version": "25.5.0"
+    },
+    {
+      "name": "python-dotenv",
+      "min_version": "1.0.0",
+      "group": "runtime",
+      "purpose": "Environment variable loading from .env",
+      "installed_version": "1.0.1"
+    },
+    {
+      "name": "httpx",
+      "min_version": "0.25.0",
+      "group": "runtime",
+      "purpose": "Async HTTP client",
+      "installed_version": "0.27.0"
+    },
+    {
+      "name": "pyyaml",
+      "min_version": "6.0.0",
+      "group": "runtime",
+      "purpose": "YAML skill definition parsing",
+      "installed_version": "6.0.3"
+    },
+    {
+      "name": "pytest",
+      "min_version": "7.4.0",
+      "group": "dev",
+      "purpose": "Test framework",
+      "installed_version": "9.0.2"
+    },
+    {
+      "name": "pytest-asyncio",
+      "min_version": "0.23.0",
+      "group": "dev",
+      "purpose": "Async test support",
+      "installed_version": "1.3.0"
+    },
+    {
+      "name": "pytest-cov",
+      "min_version": "4.1.0",
+      "group": "dev",
+      "purpose": "Test coverage reporting",
+      "installed_version": "4.1.0"
+    },
+    {
+      "name": "ruff",
+      "min_version": "0.1.0",
+      "group": "dev",
+      "purpose": "Python linter and formatter",
+      "installed_version": "0.15.1"
+    },
+    {
+      "name": "fakeredis",
+      "min_version": "2.20.0",
+      "group": "dev",
+      "purpose": "In-memory Redis for testing",
+      "installed_version": "2.34.0"
+    },
+    {
+      "name": "matplotlib",
+      "min_version": "3.8.0",
+      "group": "experiments",
+      "purpose": "Plot generation for thesis figures",
+      "installed_version": "3.10.8"
+    },
+    {
+      "name": "seaborn",
+      "min_version": "0.13.0",
+      "group": "experiments",
+      "purpose": "Statistical visualization",
+      "installed_version": "0.13.2"
+    },
+    {
+      "name": "scikit-learn",
+      "min_version": "1.3.0",
+      "group": "experiments",
+      "purpose": "ML utilities for experiments",
+      "installed_version": "not installed"
+    }
+  ],
+  "dependency_counts": {
+    "runtime": 16,
+    "dev": 5,
+    "experiments": 3,
+    "total": 24
+  },
+  "skill_files": {
+    "count": 4,
+    "total_lines": 354,
+    "files": [
+      "cashflow_forecast.yaml",
+      "customer_analysis.yaml",
+      "risk_assessment.yaml",
+      "swot_analysis.yaml"
+    ]
+  },
+  "test_files": {
+    "count": 27,
+    "total_lines": 4259
+  }
+}

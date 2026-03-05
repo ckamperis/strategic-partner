@@ -1,0 +1,86 @@
+# SWOT Analysis Skill Definition
+# Reference: Thesis Section 3.3.2 — Reasoning Pillar, Skill: SWOT Analysis
+#
+# Produces a structured SWOT (Strengths, Weaknesses, Opportunities, Threats)
+# analysis grounded in real ERP data.
+
+name: swot_analysis
+description: >
+  Generate a data-driven SWOT analysis based on ERP financial data,
+  identifying strengths, weaknesses, opportunities, and threats.
+version: "1.0"
+query_type: swot_analysis
+
+required_context:
+  - monthly_summaries
+  - business_metrics
+  - seasonal_indices
+
+system_prompt: >
+  You are a strategic business analyst for Greek SMEs. You produce SWOT analyses
+  grounded in quantitative ERP data. Each point must reference specific data
+  from the context. Output valid JSON.
+
+prompt_template: |
+  Based on the following ERP data context, produce a SWOT analysis.
+
+  === ERP DATA CONTEXT ===
+  {context}
+  === END CONTEXT ===
+
+  User Query: {query}
+
+  Produce a JSON response with exactly these fields:
+  {{
+    "strengths": [
+      {{"point": "description", "evidence": "data reference"}}
+    ],
+    "weaknesses": [
+      {{"point": "description", "evidence": "data reference"}}
+    ],
+    "opportunities": [
+      {{"point": "description", "evidence": "data reference"}}
+    ],
+    "threats": [
+      {{"point": "description", "evidence": "data reference"}}
+    ],
+    "strategic_recommendations": ["recommendation1", "recommendation2"],
+    "narrative": "2-3 sentence strategic summary in Greek"
+  }}
+
+output_schema:
+  type: object
+  required:
+    - strengths
+    - weaknesses
+    - opportunities
+    - threats
+    - narrative
+  properties:
+    strengths:
+      type: array
+      items:
+        type: object
+    weaknesses:
+      type: array
+      items:
+        type: object
+    opportunities:
+      type: array
+      items:
+        type: object
+    threats:
+      type: array
+      items:
+        type: object
+    strategic_recommendations:
+      type: array
+      items:
+        type: string
+    narrative:
+      type: string
+
+parameters:
+  model_tier: fast
+  temperature: 0.1        # Slight creativity for strategic insights
+  max_retries: 2

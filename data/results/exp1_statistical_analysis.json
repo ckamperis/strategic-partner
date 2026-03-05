@@ -1,0 +1,133 @@
+{
+  "description": "Post-hoc statistical analysis of Exp1 hybrid search α-sweep",
+  "method": "Bootstrap resampling (B=10000) + Wilcoxon signed-rank",
+  "config": {
+    "bootstrap_B": 10000,
+    "bootstrap_seed": 42,
+    "ci_level": 0.95,
+    "significance_level": 0.05,
+    "n_queries": 10,
+    "n_alpha_values": 11
+  },
+  "per_alpha_ci": [
+    {
+      "mean": 0.88207,
+      "std": 0.16998515654151822,
+      "ci_95_lower": 0.7725,
+      "ci_95_upper": 0.9741,
+      "n_queries": 10,
+      "alpha": 0.0
+    },
+    {
+      "mean": 0.89983,
+      "std": 0.1723199159831633,
+      "ci_95_lower": 0.7847,
+      "ci_95_upper": 0.9905,
+      "n_queries": 10,
+      "alpha": 0.1
+    },
+    {
+      "mean": 0.9059699999999999,
+      "std": 0.16195625643981773,
+      "ci_95_lower": 0.799,
+      "ci_95_upper": 0.9905,
+      "n_queries": 10,
+      "alpha": 0.2
+    },
+    {
+      "mean": 0.9259699999999998,
+      "std": 0.13539764522816983,
+      "ci_95_lower": 0.833,
+      "ci_95_upper": 0.9905,
+      "n_queries": 10,
+      "alpha": 0.3
+    },
+    {
+      "mean": 0.92576,
+      "std": 0.158326218787526,
+      "ci_95_lower": 0.8162,
+      "ci_95_upper": 1.0,
+      "n_queries": 10,
+      "alpha": 0.4
+    },
+    {
+      "mean": 0.90011,
+      "std": 0.18055254359880948,
+      "ci_95_lower": 0.778,
+      "ci_95_upper": 0.9897,
+      "n_queries": 10,
+      "alpha": 0.5
+    },
+    {
+      "mean": 0.85624,
+      "std": 0.3221900205365358,
+      "ci_95_lower": 0.6262,
+      "ci_95_upper": 1.0,
+      "n_queries": 10,
+      "alpha": 0.6
+    },
+    {
+      "mean": 0.85624,
+      "std": 0.3221900205365358,
+      "ci_95_lower": 0.6262,
+      "ci_95_upper": 1.0,
+      "n_queries": 10,
+      "alpha": 0.7
+    },
+    {
+      "mean": 0.85624,
+      "std": 0.3221900205365358,
+      "ci_95_lower": 0.6262,
+      "ci_95_upper": 1.0,
+      "n_queries": 10,
+      "alpha": 0.8
+    },
+    {
+      "mean": 0.85624,
+      "std": 0.3221900205365358,
+      "ci_95_lower": 0.6262,
+      "ci_95_upper": 1.0,
+      "n_queries": 10,
+      "alpha": 0.9
+    },
+    {
+      "mean": 0.84023,
+      "std": 0.3182058280421652,
+      "ci_95_lower": 0.6242,
+      "ci_95_upper": 0.9863,
+      "n_queries": 10,
+      "alpha": 1.0
+    }
+  ],
+  "statistical_tests": {
+    "alpha03_vs_alpha00": {
+      "description": "Best hybrid (α=0.3) vs pure BM25 (α=0.0)",
+      "alpha_a": 0.3,
+      "alpha_b": 0.0,
+      "mean_a": 0.926,
+      "mean_b": 0.8821,
+      "mean_difference": 0.0439,
+      "wilcoxon_statistic": 0.0,
+      "p_value": 0.25,
+      "cohens_d": 0.2857,
+      "effect_size_class": "small",
+      "significant_at_005": false,
+      "interpretation": "No statistically significant difference between α=0.3 and α=0.0 (Wilcoxon p=0.2500, Cohen's d=0.286 [small]). Mean difference: +0.0439. With n=10, statistical power is limited — the effect may exist but is undetectable."
+    },
+    "alpha03_vs_alpha10": {
+      "description": "Best hybrid (α=0.3) vs pure cosine (α=1.0)",
+      "alpha_a": 0.3,
+      "alpha_b": 1.0,
+      "mean_a": 0.926,
+      "mean_b": 0.8402,
+      "mean_difference": 0.0857,
+      "wilcoxon_statistic": 6.0,
+      "p_value": 0.8125,
+      "cohens_d": 0.3506,
+      "effect_size_class": "small",
+      "significant_at_005": false,
+      "interpretation": "No statistically significant difference between α=0.3 and α=1.0 (Wilcoxon p=0.8125, Cohen's d=0.351 [small]). Mean difference: +0.0857. With n=10, statistical power is limited — the effect may exist but is undetectable."
+    }
+  },
+  "notes": "With n=10 queries, statistical power is limited. CIs are wide but provide honest uncertainty quantification. Wilcoxon signed-rank is the appropriate non-parametric paired test when normality cannot be verified (Shapiro-Wilk is unreliable at n<20). Cohen's d provides effect size independent of sample size."
+}

@@ -1,0 +1,214 @@
+{
+  "experiment": "exp5_trust_sensitivity",
+  "description": "Trust score sensitivity to data quality and weight variations",
+  "config": {
+    "default_weights": {
+      "w_e": 0.4,
+      "w_c": 0.4,
+      "w_a": 0.2
+    },
+    "n_variants": 8,
+    "n_weight_configs": 5
+  },
+  "variant_results": [
+    {
+      "variant": "baseline",
+      "description": "Full pipeline, all data present, good quality",
+      "overall_score": 0.84,
+      "explainability": 1.0,
+      "consistency": 0.85,
+      "accuracy": 0.5,
+      "confidence_level": "high",
+      "flags": [
+        "risk_simulation_mismatch",
+        "estimated_expense_ratio",
+        "estimated_collection_delay",
+        "estimated_customer_loss_rate",
+        "limited_data_coverage"
+      ],
+      "flag_count": 5,
+      "elapsed_ms": 0.098
+    },
+    {
+      "variant": "no_knowledge",
+      "description": "Empty knowledge context (RAG failed)",
+      "overall_score": 0.62,
+      "explainability": 0.7,
+      "consistency": 0.6,
+      "accuracy": 0.5,
+      "confidence_level": "medium",
+      "flags": [
+        "low_rag_relevance",
+        "risk_simulation_mismatch",
+        "estimated_expense_ratio",
+        "estimated_collection_delay",
+        "estimated_customer_loss_rate",
+        "limited_data_coverage"
+      ],
+      "flag_count": 6,
+      "elapsed_ms": 0.0561
+    },
+    {
+      "variant": "low_relevance",
+      "description": "Low RAG relevance score (below 0.5)",
+      "overall_score": 0.72,
+      "explainability": 0.7,
+      "consistency": 0.85,
+      "accuracy": 0.5,
+      "confidence_level": "medium",
+      "flags": [
+        "risk_simulation_mismatch",
+        "estimated_expense_ratio",
+        "estimated_collection_delay",
+        "estimated_customer_loss_rate",
+        "limited_data_coverage"
+      ],
+      "flag_count": 5,
+      "elapsed_ms": 2.4192
+    },
+    {
+      "variant": "general_routing",
+      "description": "Query classified as general (no specific skill)",
+      "overall_score": 0.56,
+      "explainability": 0.65,
+      "consistency": 0.5,
+      "accuracy": 0.5,
+      "confidence_level": "medium",
+      "flags": [
+        "general_routing",
+        "estimated_expense_ratio",
+        "estimated_collection_delay",
+        "estimated_customer_loss_rate",
+        "limited_data_coverage"
+      ],
+      "flag_count": 5,
+      "elapsed_ms": 0.1888
+    },
+    {
+      "variant": "no_simulation",
+      "description": "Simulation pillar skipped completely",
+      "overall_score": 0.52,
+      "explainability": 0.8,
+      "consistency": 0.25,
+      "accuracy": 0.5,
+      "confidence_level": "medium",
+      "flags": [
+        "estimated_expense_ratio",
+        "estimated_collection_delay",
+        "estimated_customer_loss_rate",
+        "limited_data_coverage"
+      ],
+      "flag_count": 4,
+      "elapsed_ms": 0.0627
+    },
+    {
+      "variant": "low_sim_count",
+      "description": "Only 100 simulations (below 1000 threshold)",
+      "overall_score": 0.8,
+      "explainability": 0.9,
+      "consistency": 0.85,
+      "accuracy": 0.5,
+      "confidence_level": "high",
+      "flags": [
+        "low_simulation_count",
+        "risk_simulation_mismatch",
+        "estimated_expense_ratio",
+        "estimated_collection_delay",
+        "estimated_customer_loss_rate",
+        "limited_data_coverage"
+      ],
+      "flag_count": 6,
+      "elapsed_ms": 0.123
+    },
+    {
+      "variant": "all_estimated_params",
+      "description": "All distribution params at default (estimated, not fitted)",
+      "overall_score": 0.64,
+      "explainability": 0.85,
+      "consistency": 0.5,
+      "accuracy": 0.5,
+      "confidence_level": "medium",
+      "flags": [
+        "risk_simulation_mismatch",
+        "estimated_expense_ratio",
+        "estimated_collection_delay",
+        "estimated_customer_loss_rate",
+        "limited_data_coverage"
+      ],
+      "flag_count": 5,
+      "elapsed_ms": 0.0392
+    },
+    {
+      "variant": "perfect_data",
+      "description": "All conditions optimal — maximum trust score",
+      "overall_score": 1.0,
+      "explainability": 1.0,
+      "consistency": 1.0,
+      "accuracy": 1.0,
+      "confidence_level": "high",
+      "flags": [],
+      "flag_count": 0,
+      "elapsed_ms": 0.0279
+    }
+  ],
+  "weight_sensitivity": [
+    {
+      "label": "default",
+      "weights": {
+        "w_e": 0.4,
+        "w_c": 0.4,
+        "w_a": 0.2
+      },
+      "overall_score": 0.84,
+      "confidence_level": "high"
+    },
+    {
+      "label": "explainability_heavy",
+      "weights": {
+        "w_e": 0.6,
+        "w_c": 0.2,
+        "w_a": 0.2
+      },
+      "overall_score": 0.87,
+      "confidence_level": "high"
+    },
+    {
+      "label": "consistency_heavy",
+      "weights": {
+        "w_e": 0.2,
+        "w_c": 0.6,
+        "w_a": 0.2
+      },
+      "overall_score": 0.81,
+      "confidence_level": "high"
+    },
+    {
+      "label": "accuracy_heavy",
+      "weights": {
+        "w_e": 0.2,
+        "w_c": 0.2,
+        "w_a": 0.6
+      },
+      "overall_score": 0.67,
+      "confidence_level": "medium"
+    },
+    {
+      "label": "equal_weights",
+      "weights": {
+        "w_e": 0.33,
+        "w_c": 0.34,
+        "w_a": 0.33
+      },
+      "overall_score": 0.784,
+      "confidence_level": "medium"
+    }
+  ],
+  "sensitivity_summary": {
+    "max_score": 1.0,
+    "min_score": 0.52,
+    "range": 0.48,
+    "best_variant": "perfect_data",
+    "worst_variant": "no_simulation"
+  },
+  "total_elapsed_ms": 3.52
+}

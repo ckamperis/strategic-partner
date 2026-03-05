@@ -1,0 +1,202 @@
+{
+  "description": "Failure pattern analysis for Self-Correcting RAG (Exp2). Categorises the 5 failed queries and identifies the fundamental boundary between retrieval and reasoning.",
+  "total_queries": 15,
+  "passed": 10,
+  "failed": 5,
+  "pass_rate": 66.7,
+  "threshold": 0.75,
+  "max_iterations": 3,
+  "score_statistics": {
+    "passed_avg": 0.8363,
+    "passed_min": 0.75,
+    "passed_max": 0.983,
+    "failed_avg": 0.6744,
+    "failed_min": 0.557,
+    "failed_max": 0.71,
+    "gap": 0.1619
+  },
+  "iteration_pattern": {
+    "single_iteration_passed": 8,
+    "multi_iteration_passed": 2,
+    "all_failures_used_max_iterations": true,
+    "bimodal_note": "8/15 queries pass in 1 iteration, 6/15 exhaust all 3, only 1 uses exactly 2. This bimodal pattern reflects a sharp boundary between retrievable and non-retrievable queries."
+  },
+  "failure_analysis": [
+    {
+      "query_index": 8,
+      "query": "Πώς επηρεάζει η εποχικότητα τον κίνδυνο ελλειμμάτων;",
+      "final_score": 0.7,
+      "iterations_used": 3,
+      "query_history": [
+        "Πώς επηρεάζει η εποχικότητα τον κίνδυνο ελλειμμάτων;",
+        "Πώς επηρεάζει η εποχικότητα τις πωλήσεις και τα ελλείμματα;",
+        "Πώς επηρεάζει η εποχικότητα τις πωλήσεις και τα ελλείμματα σε διαφορετικές περιόδους;"
+      ],
+      "failure_category": "cross_temporal",
+      "explanation": "Requires linking seasonality data with deficit risk across multiple time periods. Seasonality information is distributed across monthly narrative chunks — no single chunk contains the full seasonal pattern AND deficit analysis. The answer requires synthesising 12+ monthly data points into a causal narrative.",
+      "refinement_pattern": "Iteration 1: Original query (0.70). Iteration 2: Added 'πωλήσεις' (sales) to broaden retrieval — score unchanged because broadening retrieves different months but still not all relevant ones. Iteration 3: Added 'διαφορετικές περιόδους' (different periods) — same problem, k=5 chunks insufficient for 12-month pattern.",
+      "refinement_helped": false,
+      "notes": "Query refinement broadened search but didn't help because the answer requires synthesis across many chunks (12+ months), not retrieval of a single relevant passage."
+    },
+    {
+      "query_index": 9,
+      "query": "Σύγκριση του δεύτερου τριμήνου με το πρώτο σε επίπεδο ταμειακών ροών",
+      "final_score": 0.705,
+      "iterations_used": 3,
+      "query_history": [
+        "Σύγκριση του δεύτερου τριμήνου με το πρώτο σε επίπεδο ταμειακών ροών",
+        "Σύγκριση ταμειακών ροών δεύτερου τριμήνου με πρώτο τριμήνου",
+        "Σύγκριση ταμειακών ροών δεύτερου τριμήνου με πρώτο τριμήνου 2022"
+      ],
+      "failure_category": "cross_temporal",
+      "explanation": "Explicitly asks to COMPARE Q2 vs Q1 cashflows. This requires retrieving data from at least 6 months (Jan-Jun) and computing differences. With k=5, the retriever can fetch at most 5 chunks, which may not cover both quarters completely. The comparison itself is a computation, not a retrieval task.",
+      "refinement_pattern": "Iteration 1: Original query (0.705). Iteration 2: Simplified to 'Σύγκριση ταμειακών ροών δεύτερου τριμήνου με πρώτο τριμήνου' — slightly more targeted but same fundamental limitation. Iteration 3: Added year '2022' — narrows to specific year but still needs 6 months of data and a comparison computation.",
+      "refinement_helped": false,
+      "notes": "Even with perfect retrieval, comparing two quarters requires arithmetic that RAG cannot perform. This is a reasoning task disguised as a retrieval query."
+    },
+    {
+      "query_index": 10,
+      "query": "Ποια η σχέση μεταξύ αριθμού πελατών και μέσου τιμολογίου;",
+      "final_score": 0.71,
+      "iterations_used": 3,
+      "query_history": [
+        "Ποια η σχέση μεταξύ αριθμού πελατών και μέσου τιμολογίου;",
+        "Ποια η μέση τιμή τιμολογίου ανά πελάτη;",
+        "Μέση τιμή τιμολογίου ανά πελάτη για τα έτη 2019-2023"
+      ],
+      "failure_category": "correlation",
+      "explanation": "Asks about the RELATIONSHIP between number of customers and average invoice value. This requires: (1) computing customer count per period, (2) computing average invoice per period, (3) correlating the two. None of these are stored as pre-computed values in the narrative chunks.",
+      "refinement_pattern": "Iteration 1: Original query (0.71). Iteration 2: Rephrased to 'Ποια η μέση τιμή τιμολογίου ανά πελάτη;' (average invoice per customer) — different question, partially answerable. Iteration 3: Added time range '2019-2023' — makes query more specific but the correlation analysis still cannot be retrieved.",
+      "refinement_helped": false,
+      "notes": "The LLM refinement shifted the query from 'correlation between two variables' to 'average value' — a simpler but different question. This shows the LLM understands the difficulty but cannot actually make the original query retrievable."
+    },
+    {
+      "query_index": 12,
+      "query": "Ποιος μήνας έχει τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής;",
+      "final_score": 0.557,
+      "iterations_used": 3,
+      "query_history": [
+        "Ποιος μήνας έχει τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής;",
+        "Ποιοι μήνες έχουν τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής;",
+        "Ποιοι μήνες έχουν τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής και γιατί;"
+      ],
+      "failure_category": "cross_temporal",
+      "explanation": "Finding the WORST month requires comparing all 12 months' cashflow risk — a superlative query across the entire dataset. With k=5, only 5 of 12 months can be retrieved. Even if the right months are retrieved, determining the 'maximum risk' month requires ranking across all periods. This is the lowest-scoring failed query (0.557), confirming that superlative queries over distributed data are the hardest for RAG.",
+      "refinement_pattern": "Iteration 1: Singular 'Ποιος μήνας' (which month) — score 0.557. Iteration 2: Plural 'Ποιοι μήνες' (which months) — broadens but doesn't improve because the problem is coverage, not query formulation. Iteration 3: Added 'και γιατί;' (and why?) — asks for explanation but still can't retrieve all 12 months for ranking.",
+      "refinement_helped": false,
+      "notes": "Lowest score among all failures (0.557). Superlative queries ('which month has the MOST...') are fundamentally incompatible with top-k retrieval — you need ALL data to find the maximum."
+    },
+    {
+      "query_index": 13,
+      "query": "Πώς θα μπορούσε να βελτιωθεί η είσπραξη;",
+      "final_score": 0.7,
+      "iterations_used": 3,
+      "query_history": [
+        "Πώς θα μπορούσε να βελτιωθεί η είσπραξη;",
+        "Ποιες είναι οι στρατηγικές για τη βελτίωση της είσπραξης;",
+        "Στρατηγικές για τη βελτίωση της είσπραξης και της διαχείρισης πιστώσεων"
+      ],
+      "failure_category": "inferential",
+      "explanation": "Asks 'how could collection be improved?' — a recommendation question. The ERP data contains transaction records, not improvement strategies. The answer requires domain knowledge about collection practices that is NOT in the embedded data. RAG retrieves payment-related chunks but they describe WHAT happened, not HOW to improve.",
+      "refinement_pattern": "Iteration 1: Original question (0.70). Iteration 2: Rephrased to 'Ποιες είναι οι στρατηγικές για τη βελτίωση της είσπραξης;' (what are the strategies) — more specific but strategies are not in ERP data. Iteration 3: Added 'διαχείρισης πιστώσεων' (credit management) — retrieves credit-related chunks but still no actionable recommendations in the data.",
+      "refinement_helped": false,
+      "notes": "This is a pure reasoning task: the answer must be GENERATED from understanding, not RETRIEVED from documents. The Reasoning Pillar (skill execution) is better suited for this type of query."
+    }
+  ],
+  "category_summary": {
+    "cross_temporal": {
+      "count": 3,
+      "description": "Queries requiring comparison of data across multiple time periods"
+    },
+    "inferential": {
+      "count": 1,
+      "description": "Queries asking for conclusions or recommendations not explicitly in the data"
+    },
+    "correlation": {
+      "count": 1,
+      "description": "Queries about relationships between variables requiring computation"
+    }
+  },
+  "passed_query_summary": [
+    {
+      "query_index": 0,
+      "query": "Ποιες είναι οι συνολικές πωλήσεις;",
+      "iterations_used": 1,
+      "final_score": 0.98,
+      "query_nature": "factual_lookup"
+    },
+    {
+      "query_index": 1,
+      "query": "Ποια είναι η εποχικότητα;",
+      "iterations_used": 2,
+      "final_score": 0.855,
+      "query_nature": "domain_specific"
+    },
+    {
+      "query_index": 2,
+      "query": "Πόσοι πελάτες υπάρχουν;",
+      "iterations_used": 3,
+      "final_score": 0.85,
+      "query_nature": "factual_lookup"
+    },
+    {
+      "query_index": 3,
+      "query": "Πρόβλεψη ταμειακών ροών για 3 μήνες",
+      "iterations_used": 1,
+      "final_score": 0.895,
+      "query_nature": "analytical_single_topic"
+    },
+    {
+      "query_index": 4,
+      "query": "Ανάλυση κινδύνου ρευστότητας",
+      "iterations_used": 1,
+      "final_score": 0.983,
+      "query_nature": "analytical_single_topic"
+    },
+    {
+      "query_index": 5,
+      "query": "Τάση εσόδων και εξόδων",
+      "iterations_used": 1,
+      "final_score": 0.8,
+      "query_nature": "analytical_single_topic"
+    },
+    {
+      "query_index": 6,
+      "query": "Ποιοι πελάτες αποτελούν τον κύριο κύκλο εργασιών;",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_nature": "domain_specific"
+    },
+    {
+      "query_index": 7,
+      "query": "Ποιο είναι το ποσοστό πιστωτικών τιμολογίων;",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_nature": "factual_lookup"
+    },
+    {
+      "query_index": 11,
+      "query": "Τι δείχνει η κατανομή τιμολογίων για τη σταθερότητα εσόδων;",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_nature": "distribution_query"
+    },
+    {
+      "query_index": 14,
+      "query": "Ανάλυση συγκέντρωσης πελατών και κινδύνου εξάρτησης",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_nature": "analytical_single_topic"
+    }
+  ],
+  "refinement_effectiveness": {
+    "any_failure_benefited": false,
+    "note": "Query refinement did NOT rescue any of the 5 failed queries. The LLM correctly identified search terms but the fundamental problem — needing synthesis/computation rather than retrieval — cannot be solved by better search queries."
+  },
+  "insight": "Self-Correcting RAG succeeds on factual retrieval queries (direct lookup, single-topic analysis) but fails on analytical queries requiring synthesis across multiple data points. The bimodal iteration distribution (8 single-pass vs 6 max-iterations) reflects this fundamental boundary between retrieval and reasoning. Failed queries fall into three categories: cross-temporal comparison (3/5), correlation analysis (1/5), and inferential reasoning (1/5).",
+  "thesis_implications": {
+    "chapter_5": "Document failure categories in Section 5.4 results. The 66.7% pass rate is honest — 5 failures are structurally non-retrievable, not quality issues.",
+    "chapter_6": "Discuss as fundamental RAG limitation: retrieval != reasoning. Self-Correcting RAG pushes the boundary but cannot cross it. The correction mechanism helps with query formulation (rescued 2 marginal queries) but not with missing capabilities.",
+    "future_work": "Agentic RAG with multi-step reasoning and intermediate computation, or knowledge graph for cross-temporal queries. Also: increase k from 5 to 10+ for temporal coverage."
+  }
+}

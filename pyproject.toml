@@ -1,0 +1,64 @@
+[project]
+name = "strategic-partner"
+version = "0.1.0"
+description = "AI Strategic Partner PoC — Master's Thesis ME2311"
+requires-python = ">=3.11"
+dependencies = [
+    # API
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    
+    # PICP Layer
+    "redis>=5.0.0",
+    
+    # Knowledge Pillar
+    "chromadb>=0.4.18",
+    "openai>=1.6.0",
+    "rank-bm25>=0.2.2",
+    "openpyxl>=3.1.0",
+    "pandas>=2.1.0",
+    
+    # Simulation Pillar
+    "numpy>=1.26.0",
+    "scipy>=1.11.0",
+    
+    # Logging & Metrics
+    "structlog>=23.2.0",
+    
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "httpx>=0.25.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "fakeredis>=2.20.0",
+]
+experiments = [
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "scikit-learn>=1.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "unit: Unit tests (no external services needed)",
+    "integration: Integration tests (needs Redis, ChromaDB)",
+    "experiment: Experiment scripts",
+]
+
+[tool.setuptools.packages.find]
+include = ["picp*", "pillars*", "orchestrator*", "config*", "experiments*", "utils*", "data*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100

@@ -1,0 +1,637 @@
+{
+  "experiment": "exp6_end_to_end",
+  "description": "End-to-end query performance with 20 real queries",
+  "config": {
+    "n_queries": 20,
+    "n_simulations": 5000,
+    "random_seed": 42
+  },
+  "overall_summary": {
+    "routing_accuracy": 0.8,
+    "avg_trust_score": 0.57,
+    "avg_total_ms": 16916.83,
+    "median_total_ms": 15782.14,
+    "max_total_ms": 33753.09,
+    "avg_answer_length": 944.0,
+    "degraded_count": 0,
+    "confidence_distribution": {
+      "high": 0,
+      "medium": 9,
+      "low": 11
+    }
+  },
+  "by_query_type": {
+    "cashflow_forecast": {
+      "count": 4,
+      "routing_accuracy": 1.0,
+      "avg_trust_score": 0.74,
+      "avg_total_ms": 13867.02,
+      "avg_answer_length": 775.0,
+      "degraded_count": 0
+    },
+    "risk_assessment": {
+      "count": 4,
+      "routing_accuracy": 0.5,
+      "avg_trust_score": 0.74,
+      "avg_total_ms": 22125.11,
+      "avg_answer_length": 1142.0,
+      "degraded_count": 0
+    },
+    "swot_analysis": {
+      "count": 4,
+      "routing_accuracy": 0.75,
+      "avg_trust_score": 0.53,
+      "avg_total_ms": 23538.17,
+      "avg_answer_length": 1496.0,
+      "degraded_count": 0
+    },
+    "customer_analysis": {
+      "count": 4,
+      "routing_accuracy": 0.75,
+      "avg_trust_score": 0.46,
+      "avg_total_ms": 16862.97,
+      "avg_answer_length": 1230.0,
+      "degraded_count": 0
+    },
+    "general": {
+      "count": 4,
+      "routing_accuracy": 1.0,
+      "avg_trust_score": 0.38,
+      "avg_total_ms": 8190.9,
+      "avg_answer_length": 76.0,
+      "degraded_count": 0
+    }
+  },
+  "per_query_results": [
+    {
+      "query_index": 0,
+      "query": "Πρόβλεψη ταμειακών ροών 3 μηνών",
+      "expected_type": "cashflow_forecast",
+      "actual_type": "cashflow_forecast",
+      "type_correct": true,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 790,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 2151.28,
+        "reasoning": 7467.51,
+        "simulation": 20.15,
+        "trust": 5.89,
+        "total_ms": 9645.79
+      },
+      "total_ms": 9645.79,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 1,
+      "query": "Πώς θα εξελιχθεί η ρευστότητα;",
+      "expected_type": "cashflow_forecast",
+      "actual_type": "cashflow_forecast",
+      "type_correct": true,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 762,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 7972.77,
+        "reasoning": 6694.27,
+        "simulation": 20.45,
+        "trust": 5.83,
+        "total_ms": 14694.43
+      },
+      "total_ms": 14694.43,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 2,
+      "query": "Ταμειακή πρόβλεψη για το τρίμηνο",
+      "expected_type": "cashflow_forecast",
+      "actual_type": "cashflow_forecast",
+      "type_correct": true,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 854,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 5037.7,
+        "reasoning": 10739.24,
+        "simulation": 20.7,
+        "trust": 5.75,
+        "total_ms": 15804.17
+      },
+      "total_ms": 15804.17,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 3,
+      "query": "Εκτίμηση εισπράξεων και πληρωμών",
+      "expected_type": "cashflow_forecast",
+      "actual_type": "cashflow_forecast",
+      "type_correct": true,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 693,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 8215.19,
+        "reasoning": 7084.01,
+        "simulation": 18.34,
+        "trust": 5.25,
+        "total_ms": 15323.68
+      },
+      "total_ms": 15323.68,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 4,
+      "query": "Ποιοι είναι οι βασικοί κίνδυνοι;",
+      "expected_type": "risk_assessment",
+      "actual_type": "risk_assessment",
+      "type_correct": true,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 1573,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 8341.51,
+        "reasoning": 14801.34,
+        "simulation": 17.42,
+        "trust": 5.22,
+        "total_ms": 23166.18
+      },
+      "total_ms": 23166.18,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 5,
+      "query": "Ανάλυση κινδύνου ρευστότητας",
+      "expected_type": "risk_assessment",
+      "actual_type": "cashflow_forecast",
+      "type_correct": false,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 968,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 3680.92,
+        "reasoning": 8588.14,
+        "simulation": 19.07,
+        "trust": 5.3,
+        "total_ms": 12294.24
+      },
+      "total_ms": 12294.24,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 6,
+      "query": "Πιθανότητα αρνητικών ταμειακών ροών",
+      "expected_type": "risk_assessment",
+      "actual_type": "cashflow_forecast",
+      "type_correct": false,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 823,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 10198.75,
+        "reasoning": 9066.24,
+        "simulation": 16.26,
+        "trust": 5.08,
+        "total_ms": 19286.93
+      },
+      "total_ms": 19286.93,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 7,
+      "query": "Αξιολόγηση κινδύνου ελλειμμάτων",
+      "expected_type": "risk_assessment",
+      "actual_type": "risk_assessment",
+      "type_correct": true,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 1205,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 19699.67,
+        "reasoning": 14028.47,
+        "simulation": 18.59,
+        "trust": 5.55,
+        "total_ms": 33753.09
+      },
+      "total_ms": 33753.09,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 8,
+      "query": "Κάνε SWOT ανάλυση",
+      "expected_type": "swot_analysis",
+      "actual_type": "swot_analysis",
+      "type_correct": true,
+      "trust_score": 0.46,
+      "confidence": "low",
+      "answer_length": 1504,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 9460.44,
+        "reasoning": 18254.27,
+        "trust": 0.8,
+        "total_ms": 27716.56
+      },
+      "total_ms": 27716.56,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 9,
+      "query": "Δυνάμεις και αδυναμίες εταιρείας",
+      "expected_type": "swot_analysis",
+      "actual_type": "swot_analysis",
+      "type_correct": true,
+      "trust_score": 0.46,
+      "confidence": "low",
+      "answer_length": 1469,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 2674.56,
+        "reasoning": 13105.89,
+        "trust": 1.02,
+        "total_ms": 15782.14
+      },
+      "total_ms": 15782.14,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 10,
+      "query": "Ανάλυση ευκαιριών και απειλών",
+      "expected_type": "swot_analysis",
+      "actual_type": "risk_assessment",
+      "type_correct": false,
+      "trust_score": 0.74,
+      "confidence": "medium",
+      "answer_length": 1446,
+      "simulation_ran": true,
+      "n_factors": 5,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 8416.3,
+        "reasoning": 14236.63,
+        "simulation": 21.12,
+        "trust": 5.99,
+        "total_ms": 22680.96
+      },
+      "total_ms": 22680.96,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 11,
+      "query": "SWOT στρατηγική ανάλυση",
+      "expected_type": "swot_analysis",
+      "actual_type": "swot_analysis",
+      "type_correct": true,
+      "trust_score": 0.46,
+      "confidence": "low",
+      "answer_length": 1564,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 7130.44,
+        "reasoning": 20841.17,
+        "trust": 0.85,
+        "total_ms": 27973.02
+      },
+      "total_ms": 27973.02,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 12,
+      "query": "Ανάλυση πελατολογίου",
+      "expected_type": "customer_analysis",
+      "actual_type": "customer_analysis",
+      "type_correct": true,
+      "trust_score": 0.46,
+      "confidence": "low",
+      "answer_length": 1236,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 1365.59,
+        "reasoning": 10956.53,
+        "trust": 0.89,
+        "total_ms": 12323.6
+      },
+      "total_ms": 12323.6,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 13,
+      "query": "Ποιοι είναι οι κύριοι πελάτες;",
+      "expected_type": "customer_analysis",
+      "actual_type": "customer_analysis",
+      "type_correct": true,
+      "trust_score": 0.46,
+      "confidence": "low",
+      "answer_length": 1090,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 8632.82,
+        "reasoning": 9371.43,
+        "trust": 0.87,
+        "total_ms": 18005.7
+      },
+      "total_ms": 18005.7,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 14,
+      "query": "Κατανομή τζίρου ανά πελάτη",
+      "expected_type": "customer_analysis",
+      "actual_type": "customer_analysis",
+      "type_correct": true,
+      "trust_score": 0.46,
+      "confidence": "low",
+      "answer_length": 1076,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 6552.54,
+        "reasoning": 9008.81,
+        "trust": 1.95,
+        "total_ms": 15564.08
+      },
+      "total_ms": 15564.08,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 15,
+      "query": "Αξιολόγηση πελατειακής βάσης",
+      "expected_type": "customer_analysis",
+      "actual_type": "swot_analysis",
+      "type_correct": false,
+      "trust_score": 0.46,
+      "confidence": "low",
+      "answer_length": 1519,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 4,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 8024.94,
+        "reasoning": 13532.21,
+        "trust": 0.74,
+        "total_ms": 21558.48
+      },
+      "total_ms": 21558.48,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 16,
+      "query": "Καλημέρα, πώς λειτουργείς;",
+      "expected_type": "general",
+      "actual_type": "general",
+      "type_correct": true,
+      "trust_score": 0.38,
+      "confidence": "low",
+      "answer_length": 76,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 5,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 8187.02,
+        "reasoning": 0.23,
+        "trust": 0.85,
+        "total_ms": 8188.59
+      },
+      "total_ms": 8188.59,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 17,
+      "query": "Τι μπορείς να κάνεις;",
+      "expected_type": "general",
+      "actual_type": "general",
+      "type_correct": true,
+      "trust_score": 0.38,
+      "confidence": "low",
+      "answer_length": 76,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 5,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 7875.43,
+        "reasoning": 0.2,
+        "trust": 0.44,
+        "total_ms": 7876.45
+      },
+      "total_ms": 7876.45,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 18,
+      "query": "Γενική εικόνα εταιρείας",
+      "expected_type": "general",
+      "actual_type": "general",
+      "type_correct": true,
+      "trust_score": 0.38,
+      "confidence": "low",
+      "answer_length": 76,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 5,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 7497.26,
+        "reasoning": 0.21,
+        "trust": 0.8,
+        "total_ms": 7498.76
+      },
+      "total_ms": 7498.76,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    },
+    {
+      "query_index": 19,
+      "query": "Πόσα δεδομένα έχεις;",
+      "expected_type": "general",
+      "actual_type": "general",
+      "type_correct": true,
+      "trust_score": 0.38,
+      "confidence": "low",
+      "answer_length": 76,
+      "simulation_ran": false,
+      "n_factors": 0,
+      "n_caveats": 5,
+      "degradation_flags": [],
+      "degraded": false,
+      "pillar_timings": {
+        "knowledge": 9198.2,
+        "reasoning": 0.22,
+        "trust": 0.83,
+        "total_ms": 9199.78
+      },
+      "total_ms": 9199.78,
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      }
+    }
+  ],
+  "total_elapsed_ms": 418670.43
+}

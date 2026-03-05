@@ -1,0 +1,93 @@
+# Cashflow Forecast Skill Definition
+# Reference: Thesis Section 3.3.2 — Reasoning Pillar, Skill: Cashflow Forecast
+#
+# This skill analyses ERP-derived financial data and produces a structured
+# cashflow forecast. The LLM synthesises knowledge context (RAG chunks)
+# into quantitative projections.
+
+name: cashflow_forecast
+description: >
+  Analyse historical ERP cashflow data and produce a structured forecast
+  with projected inflows, outflows, and net cashflow.
+version: "1.0"
+query_type: cashflow_forecast
+
+# Input requirements — what must be in the knowledge context
+required_context:
+  - monthly_summaries    # Monthly aggregated cashflow data
+  - seasonal_indices     # Seasonal adjustment factors
+  - business_metrics     # Overall business metrics
+
+# System prompt sent to the LLM
+system_prompt: >
+  You are a financial analyst specialising in cashflow forecasting for Greek SMEs.
+  You analyse ERP transaction data and produce structured, quantitative forecasts.
+  Always ground your analysis in the provided data. Explicitly state assumptions.
+  Output must be valid JSON.
+
+# User prompt template — {context} and {query} are replaced at runtime
+prompt_template: |
+  Based on the following ERP data context, answer the user's query.
+
+  === ERP DATA CONTEXT ===
+  {context}
+  === END CONTEXT ===
+
+  User Query: {query}
+
+  Produce a JSON response with exactly these fields:
+  {{
+    "forecast_period": "description of the forecast period",
+    "projected_inflows": <number>,
+    "projected_outflows": <number>,
+    "projected_net_cashflow": <number>,
+    "confidence_level": "high|medium|low",
+    "key_assumptions": ["assumption1", "assumption2", ...],
+    "seasonal_factors": ["factor1", "factor2", ...],
+    "risk_factors": ["risk1", "risk2", ...],
+    "narrative": "2-3 sentence summary in Greek"
+  }}
+
+# Output schema for validation
+output_schema:
+  type: object
+  required:
+    - forecast_period
+    - projected_inflows
+    - projected_outflows
+    - projected_net_cashflow
+    - confidence_level
+    - key_assumptions
+    - narrative
+  properties:
+    forecast_period:
+      type: string
+    projected_inflows:
+      type: number
+    projected_outflows:
+      type: number
+    projected_net_cashflow:
+      type: number
+    confidence_level:
+      type: string
+      enum: [high, medium, low]
+    key_assumptions:
+      type: array
+      items:
+        type: string
+    seasonal_factors:
+      type: array
+      items:
+        type: string
+    risk_factors:
+      type: array
+      items:
+        type: string
+    narrative:
+      type: string
+
+# Execution parameters
+parameters:
+  model_tier: fast        # Use gpt-4o-mini (cost-efficient for structured output)
+  temperature: 0.0        # Deterministic output
+  max_retries: 2          # Retry on JSON parse failure

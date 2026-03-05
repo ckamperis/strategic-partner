@@ -1,0 +1,371 @@
+{
+  "experiment": "exp7_degradation",
+  "description": "Graceful degradation verification — 8 redesigned failure scenarios",
+  "correction_note": "v1 had redundant scenarios 6-7 (identical results because R failure -> general type -> S skipped). v2 adds K+S, R+S, and all-4-fail scenarios.",
+  "config": {
+    "test_query": "Πρόβλεψη ταμειακών ροών 3 μηνών",
+    "n_scenarios": 8,
+    "n_simulations": 100
+  },
+  "summary": {
+    "total_scenarios": 8,
+    "crashes": 0,
+    "graceful_degradation": 8,
+    "resilience_rate": 1.0,
+    "with_degradation_flags": 7,
+    "with_caveats": 8
+  },
+  "per_scenario_results": [
+    {
+      "scenario": "baseline_no_failure",
+      "description": "No failures — full pipeline works",
+      "injected_failures": [],
+      "crashed": false,
+      "query_type": "cashflow_forecast",
+      "trust_score": 0.4,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 40,
+      "simulation_ran": true,
+      "degradation_flags": [],
+      "n_caveats": 6,
+      "caveats": [
+        "Χαμηλή σχετικότητα ανάκτησης δεδομένων — τα αποτελέσματα μπορεί να μην αντικατοπτρίζουν πλήρως τα διαθέσιμα δεδομένα.",
+        "Χαμηλός αριθμός προσομοιώσεων — τα στατιστικά αποτελέσματα ενδέχεται να μην έχουν συγκλίνει.",
+        "Ο δείκτης εξόδων (0.72) είναι εκτιμώμενος — δεν υπάρχουν τιμολόγια προμηθευτών στα δεδομένα.",
+        "Η καθυστέρηση είσπραξης (52 ημέρες) είναι εκτιμώμενη — DUEDATE = TRNDATE στο dataset.",
+        "Ο ρυθμός απώλειας πελατών (2%/τρίμηνο) είναι εκτιμώμενος — δεν υπάρχει διαχρονική παρακολούθηση πελατών.",
+        "Περιορισμένη κάλυψη δεδομένων — λιγότερα από 12 μήνες δεδομένων."
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      },
+      "elapsed_ms": 409.28
+    },
+    {
+      "scenario": "knowledge_fails",
+      "description": "Knowledge Pillar raises RuntimeError",
+      "injected_failures": [
+        "_knowledge"
+      ],
+      "crashed": false,
+      "query_type": "cashflow_forecast",
+      "trust_score": 0.4,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 40,
+      "simulation_ran": true,
+      "degradation_flags": [
+        "knowledge_failed"
+      ],
+      "n_caveats": 7,
+      "caveats": [
+        "Χαμηλή σχετικότητα ανάκτησης δεδομένων — τα αποτελέσματα μπορεί να μην αντικατοπτρίζουν πλήρως τα διαθέσιμα δεδομένα.",
+        "Χαμηλός αριθμός προσομοιώσεων — τα στατιστικά αποτελέσματα ενδέχεται να μην έχουν συγκλίνει.",
+        "Ο δείκτης εξόδων (0.72) είναι εκτιμώμενος — δεν υπάρχουν τιμολόγια προμηθευτών στα δεδομένα.",
+        "Η καθυστέρηση είσπραξης (52 ημέρες) είναι εκτιμώμενη — DUEDATE = TRNDATE στο dataset.",
+        "Ο ρυθμός απώλειας πελατών (2%/τρίμηνο) είναι εκτιμώμενος — δεν υπάρχει διαχρονική παρακολούθηση πελατών.",
+        "Περιορισμένη κάλυψη δεδομένων — λιγότερα από 12 μήνες δεδομένων.",
+        "Pipeline degraded: knowledge_failed"
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      },
+      "elapsed_ms": 6.41
+    },
+    {
+      "scenario": "reasoning_fails",
+      "description": "Reasoning Pillar raises RuntimeError",
+      "injected_failures": [
+        "_reasoning"
+      ],
+      "crashed": false,
+      "query_type": "general",
+      "trust_score": 0.26,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 22,
+      "simulation_ran": false,
+      "degradation_flags": [
+        "reasoning_failed"
+      ],
+      "n_caveats": 8,
+      "caveats": [
+        "Χαμηλή σχετικότητα ανάκτησης δεδομένων — τα αποτελέσματα μπορεί να μην αντικατοπτρίζουν πλήρως τα διαθέσιμα δεδομένα.",
+        "Το ερώτημα δεν αντιστοιχήθηκε σε εξειδικευμένη δεξιότητα — χρησιμοποιήθηκε γενική ανάλυση.",
+        "Ανεπαρκή δεδομένα για πλήρη έλεγχο συνέπειας.",
+        "Ο δείκτης εξόδων (0.72) είναι εκτιμώμενος — δεν υπάρχουν τιμολόγια προμηθευτών στα δεδομένα.",
+        "Η καθυστέρηση είσπραξης (52 ημέρες) είναι εκτιμώμενη — DUEDATE = TRNDATE στο dataset.",
+        "Ο ρυθμός απώλειας πελατών (2%/τρίμηνο) είναι εκτιμώμενος — δεν υπάρχει διαχρονική παρακολούθηση πελατών.",
+        "Περιορισμένη κάλυψη δεδομένων — λιγότερα από 12 μήνες δεδομένων.",
+        "Pipeline degraded: reasoning_failed"
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      },
+      "elapsed_ms": 2.7
+    },
+    {
+      "scenario": "simulation_fails",
+      "description": "Simulation Pillar raises RuntimeError",
+      "injected_failures": [
+        "_simulation"
+      ],
+      "crashed": false,
+      "query_type": "cashflow_forecast",
+      "trust_score": 0.4,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 40,
+      "simulation_ran": false,
+      "degradation_flags": [
+        "simulation_failed"
+      ],
+      "n_caveats": 7,
+      "caveats": [
+        "Χαμηλή σχετικότητα ανάκτησης δεδομένων — τα αποτελέσματα μπορεί να μην αντικατοπτρίζουν πλήρως τα διαθέσιμα δεδομένα.",
+        "Ανεπαρκή δεδομένα για πλήρη έλεγχο συνέπειας.",
+        "Ο δείκτης εξόδων (0.72) είναι εκτιμώμενος — δεν υπάρχουν τιμολόγια προμηθευτών στα δεδομένα.",
+        "Η καθυστέρηση είσπραξης (52 ημέρες) είναι εκτιμώμενη — DUEDATE = TRNDATE στο dataset.",
+        "Ο ρυθμός απώλειας πελατών (2%/τρίμηνο) είναι εκτιμώμενος — δεν υπάρχει διαχρονική παρακολούθηση πελατών.",
+        "Περιορισμένη κάλυψη δεδομένων — λιγότερα από 12 μήνες δεδομένων.",
+        "Pipeline degraded: simulation_failed"
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      },
+      "elapsed_ms": 2.3
+    },
+    {
+      "scenario": "trust_fails",
+      "description": "Trust Pillar raises RuntimeError",
+      "injected_failures": [
+        "_trust"
+      ],
+      "crashed": false,
+      "query_type": "cashflow_forecast",
+      "trust_score": 0.0,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 40,
+      "simulation_ran": true,
+      "degradation_flags": [
+        "trust_failed"
+      ],
+      "n_caveats": 1,
+      "caveats": [
+        "Pipeline degraded: trust_failed"
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      },
+      "elapsed_ms": 5.0
+    },
+    {
+      "scenario": "knowledge_and_simulation_fail",
+      "description": "Knowledge and Simulation fail independently (Reasoning still routes correctly)",
+      "injected_failures": [
+        "_knowledge",
+        "_simulation"
+      ],
+      "crashed": false,
+      "query_type": "cashflow_forecast",
+      "trust_score": 0.4,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 40,
+      "simulation_ran": false,
+      "degradation_flags": [
+        "knowledge_failed",
+        "simulation_failed"
+      ],
+      "n_caveats": 8,
+      "caveats": [
+        "Χαμηλή σχετικότητα ανάκτησης δεδομένων — τα αποτελέσματα μπορεί να μην αντικατοπτρίζουν πλήρως τα διαθέσιμα δεδομένα.",
+        "Ανεπαρκή δεδομένα για πλήρη έλεγχο συνέπειας.",
+        "Ο δείκτης εξόδων (0.72) είναι εκτιμώμενος — δεν υπάρχουν τιμολόγια προμηθευτών στα δεδομένα.",
+        "Η καθυστέρηση είσπραξης (52 ημέρες) είναι εκτιμώμενη — DUEDATE = TRNDATE στο dataset.",
+        "Ο ρυθμός απώλειας πελατών (2%/τρίμηνο) είναι εκτιμώμενος — δεν υπάρχει διαχρονική παρακολούθηση πελατών.",
+        "Περιορισμένη κάλυψη δεδομένων — λιγότερα από 12 μήνες δεδομένων.",
+        "Pipeline degraded: knowledge_failed",
+        "Pipeline degraded: simulation_failed"
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 1,
+        "trust": 1
+      },
+      "elapsed_ms": 1.15
+    },
+    {
+      "scenario": "reasoning_and_simulation_fail",
+      "description": "Reasoning + Simulation fail — cascade: R fails -> general type -> S skipped",
+      "injected_failures": [
+        "_reasoning",
+        "_simulation"
+      ],
+      "crashed": false,
+      "query_type": "general",
+      "trust_score": 0.26,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 22,
+      "simulation_ran": false,
+      "degradation_flags": [
+        "reasoning_failed"
+      ],
+      "n_caveats": 8,
+      "caveats": [
+        "Χαμηλή σχετικότητα ανάκτησης δεδομένων — τα αποτελέσματα μπορεί να μην αντικατοπτρίζουν πλήρως τα διαθέσιμα δεδομένα.",
+        "Το ερώτημα δεν αντιστοιχήθηκε σε εξειδικευμένη δεξιότητα — χρησιμοποιήθηκε γενική ανάλυση.",
+        "Ανεπαρκή δεδομένα για πλήρη έλεγχο συνέπειας.",
+        "Ο δείκτης εξόδων (0.72) είναι εκτιμώμενος — δεν υπάρχουν τιμολόγια προμηθευτών στα δεδομένα.",
+        "Η καθυστέρηση είσπραξης (52 ημέρες) είναι εκτιμώμενη — DUEDATE = TRNDATE στο dataset.",
+        "Ο ρυθμός απώλειας πελατών (2%/τρίμηνο) είναι εκτιμώμενος — δεν υπάρχει διαχρονική παρακολούθηση πελατών.",
+        "Περιορισμένη κάλυψη δεδομένων — λιγότερα από 12 μήνες δεδομένων.",
+        "Pipeline degraded: reasoning_failed"
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      },
+      "elapsed_ms": 2.45
+    },
+    {
+      "scenario": "all_four_pillars_fail",
+      "description": "All 4 pillars fail simultaneously — worst case",
+      "injected_failures": [
+        "_knowledge",
+        "_reasoning",
+        "_simulation",
+        "_trust"
+      ],
+      "crashed": false,
+      "query_type": "general",
+      "trust_score": 0.0,
+      "confidence": "low",
+      "has_answer": true,
+      "answer_length": 22,
+      "simulation_ran": false,
+      "degradation_flags": [
+        "knowledge_failed",
+        "reasoning_failed",
+        "trust_failed"
+      ],
+      "n_caveats": 3,
+      "caveats": [
+        "Pipeline degraded: knowledge_failed",
+        "Pipeline degraded: reasoning_failed",
+        "Pipeline degraded: trust_failed"
+      ],
+      "vector_clock": {
+        "knowledge": 1,
+        "reasoning": 1,
+        "simulation": 0,
+        "trust": 1
+      },
+      "elapsed_ms": 0.7
+    }
+  ],
+  "validations": [
+    {
+      "scenario": "baseline_no_failure",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    },
+    {
+      "scenario": "knowledge_fails",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    },
+    {
+      "scenario": "reasoning_fails",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    },
+    {
+      "scenario": "simulation_fails",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    },
+    {
+      "scenario": "trust_fails",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    },
+    {
+      "scenario": "knowledge_and_simulation_fail",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    },
+    {
+      "scenario": "reasoning_and_simulation_fail",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    },
+    {
+      "scenario": "all_four_pillars_fail",
+      "no_crash": true,
+      "has_answer": true,
+      "flags_correct": true,
+      "trust_reflects_degradation": true,
+      "caveats_present": true,
+      "vector_clock_valid": true,
+      "all_checks_pass": true
+    }
+  ],
+  "total_elapsed_ms": 478.24
+}

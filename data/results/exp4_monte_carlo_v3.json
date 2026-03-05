@@ -1,0 +1,974 @@
+{
+  "experiment": "exp4_monte_carlo_v3",
+  "description": "MC convergence and backtesting with FULL dataset (~240 months)",
+  "motivation": "v1/v2 used recent_years=5 (60 months). v3 uses recent_years=None for full 2004-2024 dataset, providing more robust seasonal fitting and 24 test months (vs 12 in v2).",
+  "dataset": {
+    "total_months": 240,
+    "training_months": 216,
+    "training_range": "2004-01 to 2021-12",
+    "test_months": 24,
+    "test_range": "2022-01 to 2023-12",
+    "total_transaction_rows": 544629
+  },
+  "training_distributions": {
+    "revenue_mean": 175726.57,
+    "revenue_std": 110752.66,
+    "seasonal_factors": [
+      0.8476,
+      0.8783,
+      0.9933,
+      0.8504,
+      0.9592,
+      0.9546,
+      0.9644,
+      0.5628,
+      1.038,
+      1.0387,
+      1.1176,
+      1.795
+    ],
+    "expense_ratio_mean": 0.72,
+    "expense_ratio_std": 0.05,
+    "credit_note_probability": 0.9954,
+    "credit_note_ratio": 0.0359
+  },
+  "convergence": {
+    "results": [
+      {
+        "n_simulations": 100,
+        "month1_mean": 39752.67,
+        "month1_std": 27884.22,
+        "month1_p5": 4801.27,
+        "month1_p50": 36787.98,
+        "month1_p95": 89661.4,
+        "cumulative_mean": 124927.01,
+        "cumulative_std": 52427.97,
+        "convergence_std": 5242.7971,
+        "probability_negative": 0.0,
+        "var_5pct": 51106.33,
+        "elapsed_ms": 1.09,
+        "mean_pct_diff_from_ref": 0.547
+      },
+      {
+        "n_simulations": 500,
+        "month1_mean": 40534.84,
+        "month1_std": 28627.42,
+        "month1_p5": 0.0,
+        "month1_p50": 38140.9,
+        "month1_p95": 91395.59,
+        "cumulative_mean": 126239.56,
+        "cumulative_std": 50527.47,
+        "convergence_std": 2259.6574,
+        "probability_negative": 0.0,
+        "var_5pct": 52122.95,
+        "elapsed_ms": 0.97,
+        "mean_pct_diff_from_ref": 1.41
+      },
+      {
+        "n_simulations": 1000,
+        "month1_mean": 39679.42,
+        "month1_std": 27363.96,
+        "month1_p5": 0.0,
+        "month1_p50": 37203.71,
+        "month1_p95": 89594.93,
+        "cumulative_mean": 125908.6,
+        "cumulative_std": 49014.41,
+        "convergence_std": 1549.9716,
+        "probability_negative": 0.0,
+        "var_5pct": 51265.82,
+        "elapsed_ms": 1.14,
+        "mean_pct_diff_from_ref": 0.73
+      },
+      {
+        "n_simulations": 5000,
+        "month1_mean": 40231.77,
+        "month1_std": 27818.65,
+        "month1_p5": 0.0,
+        "month1_p50": 37410.18,
+        "month1_p95": 89858.21,
+        "cumulative_mean": 127061.49,
+        "cumulative_std": 48946.45,
+        "convergence_std": 692.2073,
+        "probability_negative": 0.0,
+        "var_5pct": 50869.51,
+        "elapsed_ms": 2.59,
+        "mean_pct_diff_from_ref": 0.652
+      },
+      {
+        "n_simulations": 10000,
+        "month1_mean": 40655.75,
+        "month1_std": 28211.76,
+        "month1_p5": 0.0,
+        "month1_p50": 38003.11,
+        "month1_p95": 91193.98,
+        "cumulative_mean": 128886.56,
+        "cumulative_std": 49526.2,
+        "convergence_std": 495.262,
+        "probability_negative": 0.0,
+        "var_5pct": 51897.68,
+        "elapsed_ms": 4.59,
+        "mean_pct_diff_from_ref": 1.712
+      },
+      {
+        "n_simulations": 50000,
+        "month1_mean": 39971.28,
+        "month1_std": 27758.82,
+        "month1_p5": 0.0,
+        "month1_p50": 37377.09,
+        "month1_p95": 89985.96,
+        "cumulative_mean": 127730.92,
+        "cumulative_std": 48902.6,
+        "convergence_std": 218.6991,
+        "probability_negative": 0.0,
+        "var_5pct": 52646.3,
+        "elapsed_ms": 23.83,
+        "mean_pct_diff_from_ref": 0.0
+      }
+    ],
+    "converged_at_n": 100
+  },
+  "backtesting": {
+    "variant_a_gross_revenue": {
+      "variant": "gross_revenue",
+      "per_month": [
+        {
+          "month": "2022-01",
+          "actual_net_cf": 223507.28,
+          "forecast_mean": 147037.04,
+          "forecast_std": 98654.42,
+          "forecast_p5": 0.0,
+          "forecast_p50": 142937.37,
+          "forecast_p95": 318212.49,
+          "within_90pct_ci": true,
+          "z_score": 0.775,
+          "abs_error": 76470.24,
+          "pct_error": 34.21
+        },
+        {
+          "month": "2022-02",
+          "actual_net_cf": 299114.95,
+          "forecast_mean": 153141.23,
+          "forecast_std": 99715.29,
+          "forecast_p5": 0.0,
+          "forecast_p50": 148361.43,
+          "forecast_p95": 324973.04,
+          "within_90pct_ci": true,
+          "z_score": 1.464,
+          "abs_error": 145973.72,
+          "pct_error": 48.8
+        },
+        {
+          "month": "2022-03",
+          "actual_net_cf": 249699.48,
+          "forecast_mean": 171127.69,
+          "forecast_std": 101556.0,
+          "forecast_p5": 0.0,
+          "forecast_p50": 168302.25,
+          "forecast_p95": 343629.38,
+          "within_90pct_ci": true,
+          "z_score": 0.774,
+          "abs_error": 78571.79,
+          "pct_error": 31.47
+        },
+        {
+          "month": "2022-04",
+          "actual_net_cf": 212169.46,
+          "forecast_mean": 149624.79,
+          "forecast_std": 98679.28,
+          "forecast_p5": 0.0,
+          "forecast_p50": 145623.21,
+          "forecast_p95": 322476.57,
+          "within_90pct_ci": true,
+          "z_score": 0.634,
+          "abs_error": 62544.67,
+          "pct_error": 29.48
+        },
+        {
+          "month": "2022-05",
+          "actual_net_cf": 223519.32,
+          "forecast_mean": 164445.07,
+          "forecast_std": 101667.94,
+          "forecast_p5": 0.0,
+          "forecast_p50": 160419.89,
+          "forecast_p95": 339050.48,
+          "within_90pct_ci": true,
+          "z_score": 0.581,
+          "abs_error": 59074.25,
+          "pct_error": 26.43
+        },
+        {
+          "month": "2022-06",
+          "actual_net_cf": 286856.97,
+          "forecast_mean": 165109.01,
+          "forecast_std": 101159.68,
+          "forecast_p5": 0.0,
+          "forecast_p50": 162562.22,
+          "forecast_p95": 337436.56,
+          "within_90pct_ci": true,
+          "z_score": 1.204,
+          "abs_error": 121747.96,
+          "pct_error": 42.44
+        },
+        {
+          "month": "2022-07",
+          "actual_net_cf": 255913.57,
+          "forecast_mean": 165784.89,
+          "forecast_std": 101225.12,
+          "forecast_p5": 0.0,
+          "forecast_p50": 162866.41,
+          "forecast_p95": 337494.1,
+          "within_90pct_ci": true,
+          "z_score": 0.89,
+          "abs_error": 90128.68,
+          "pct_error": 35.22
+        },
+        {
+          "month": "2022-08",
+          "actual_net_cf": 178672.84,
+          "forecast_mean": 106104.5,
+          "forecast_std": 89777.93,
+          "forecast_p5": 0.0,
+          "forecast_p50": 96355.62,
+          "forecast_p95": 269099.14,
+          "within_90pct_ci": true,
+          "z_score": 0.808,
+          "abs_error": 72568.34,
+          "pct_error": 40.62
+        },
+        {
+          "month": "2022-09",
+          "actual_net_cf": 350143.11,
+          "forecast_mean": 179419.41,
+          "forecast_std": 102706.49,
+          "forecast_p5": 2225.35,
+          "forecast_p50": 175948.51,
+          "forecast_p95": 354613.49,
+          "within_90pct_ci": true,
+          "z_score": 1.662,
+          "abs_error": 170723.7,
+          "pct_error": 48.76
+        },
+        {
+          "month": "2022-10",
+          "actual_net_cf": 297718.9,
+          "forecast_mean": 178460.41,
+          "forecast_std": 102293.52,
+          "forecast_p5": 0.0,
+          "forecast_p50": 176671.0,
+          "forecast_p95": 352752.3,
+          "within_90pct_ci": true,
+          "z_score": 1.166,
+          "abs_error": 119258.49,
+          "pct_error": 40.06
+        },
+        {
+          "month": "2022-11",
+          "actual_net_cf": 332324.02,
+          "forecast_mean": 191040.84,
+          "forecast_std": 103408.29,
+          "forecast_p5": 13160.02,
+          "forecast_p50": 190405.2,
+          "forecast_p95": 364142.72,
+          "within_90pct_ci": true,
+          "z_score": 1.366,
+          "abs_error": 141283.18,
+          "pct_error": 42.51
+        },
+        {
+          "month": "2022-12",
+          "actual_net_cf": 381958.23,
+          "forecast_mean": 303048.74,
+          "forecast_std": 107128.43,
+          "forecast_p5": 129037.17,
+          "forecast_p50": 302816.32,
+          "forecast_p95": 481776.17,
+          "within_90pct_ci": true,
+          "z_score": 0.737,
+          "abs_error": 78909.49,
+          "pct_error": 20.66
+        },
+        {
+          "month": "2023-01",
+          "actual_net_cf": 321455.59,
+          "forecast_mean": 147037.04,
+          "forecast_std": 98654.42,
+          "forecast_p5": 0.0,
+          "forecast_p50": 142937.37,
+          "forecast_p95": 318212.49,
+          "within_90pct_ci": false,
+          "z_score": 1.768,
+          "abs_error": 174418.54,
+          "pct_error": 54.26
+        },
+        {
+          "month": "2023-02",
+          "actual_net_cf": 291642.54,
+          "forecast_mean": 153141.23,
+          "forecast_std": 99715.29,
+          "forecast_p5": 0.0,
+          "forecast_p50": 148361.43,
+          "forecast_p95": 324973.04,
+          "within_90pct_ci": true,
+          "z_score": 1.389,
+          "abs_error": 138501.31,
+          "pct_error": 47.49
+        },
+        {
+          "month": "2023-03",
+          "actual_net_cf": 354364.17,
+          "forecast_mean": 171127.69,
+          "forecast_std": 101556.0,
+          "forecast_p5": 0.0,
+          "forecast_p50": 168302.25,
+          "forecast_p95": 343629.38,
+          "within_90pct_ci": false,
+          "z_score": 1.804,
+          "abs_error": 183236.48,
+          "pct_error": 51.71
+        },
+        {
+          "month": "2023-04",
+          "actual_net_cf": 343324.16,
+          "forecast_mean": 149624.79,
+          "forecast_std": 98679.28,
+          "forecast_p5": 0.0,
+          "forecast_p50": 145623.21,
+          "forecast_p95": 322476.57,
+          "within_90pct_ci": false,
+          "z_score": 1.963,
+          "abs_error": 193699.37,
+          "pct_error": 56.42
+        },
+        {
+          "month": "2023-05",
+          "actual_net_cf": 283531.65,
+          "forecast_mean": 164445.07,
+          "forecast_std": 101667.94,
+          "forecast_p5": 0.0,
+          "forecast_p50": 160419.89,
+          "forecast_p95": 339050.48,
+          "within_90pct_ci": true,
+          "z_score": 1.171,
+          "abs_error": 119086.58,
+          "pct_error": 42.0
+        },
+        {
+          "month": "2023-06",
+          "actual_net_cf": 357939.24,
+          "forecast_mean": 165109.01,
+          "forecast_std": 101159.68,
+          "forecast_p5": 0.0,
+          "forecast_p50": 162562.22,
+          "forecast_p95": 337436.56,
+          "within_90pct_ci": false,
+          "z_score": 1.906,
+          "abs_error": 192830.23,
+          "pct_error": 53.87
+        },
+        {
+          "month": "2023-07",
+          "actual_net_cf": 330482.62,
+          "forecast_mean": 165784.89,
+          "forecast_std": 101225.12,
+          "forecast_p5": 0.0,
+          "forecast_p50": 162866.41,
+          "forecast_p95": 337494.1,
+          "within_90pct_ci": true,
+          "z_score": 1.627,
+          "abs_error": 164697.73,
+          "pct_error": 49.84
+        },
+        {
+          "month": "2023-08",
+          "actual_net_cf": 276468.13,
+          "forecast_mean": 106104.5,
+          "forecast_std": 89777.93,
+          "forecast_p5": 0.0,
+          "forecast_p50": 96355.62,
+          "forecast_p95": 269099.14,
+          "within_90pct_ci": false,
+          "z_score": 1.898,
+          "abs_error": 170363.63,
+          "pct_error": 61.62
+        },
+        {
+          "month": "2023-09",
+          "actual_net_cf": 248850.57,
+          "forecast_mean": 179419.41,
+          "forecast_std": 102706.49,
+          "forecast_p5": 2225.35,
+          "forecast_p50": 175948.51,
+          "forecast_p95": 354613.49,
+          "within_90pct_ci": true,
+          "z_score": 0.676,
+          "abs_error": 69431.16,
+          "pct_error": 27.9
+        },
+        {
+          "month": "2023-10",
+          "actual_net_cf": 316210.36,
+          "forecast_mean": 178460.41,
+          "forecast_std": 102293.52,
+          "forecast_p5": 0.0,
+          "forecast_p50": 176671.0,
+          "forecast_p95": 352752.3,
+          "within_90pct_ci": true,
+          "z_score": 1.347,
+          "abs_error": 137749.95,
+          "pct_error": 43.56
+        },
+        {
+          "month": "2023-11",
+          "actual_net_cf": 305951.38,
+          "forecast_mean": 191040.84,
+          "forecast_std": 103408.29,
+          "forecast_p5": 13160.02,
+          "forecast_p50": 190405.2,
+          "forecast_p95": 364142.72,
+          "within_90pct_ci": true,
+          "z_score": 1.111,
+          "abs_error": 114910.54,
+          "pct_error": 37.56
+        },
+        {
+          "month": "2023-12",
+          "actual_net_cf": 377242.63,
+          "forecast_mean": 303048.74,
+          "forecast_std": 107128.43,
+          "forecast_p5": 129037.17,
+          "forecast_p50": 302816.32,
+          "forecast_p95": 481776.17,
+          "within_90pct_ci": true,
+          "z_score": 0.693,
+          "abs_error": 74193.89,
+          "pct_error": 19.67
+        }
+      ],
+      "coverage_90pct_ci": 0.7917,
+      "avg_pct_error": 41.11,
+      "avg_abs_error": 122932.25,
+      "quarter_summary": {
+        "2022-Q1": {
+          "months": [
+            "2022-01",
+            "2022-02",
+            "2022-03"
+          ],
+          "avg_pct_error": 38.16,
+          "coverage": 1.0
+        },
+        "2022-Q2": {
+          "months": [
+            "2022-04",
+            "2022-05",
+            "2022-06"
+          ],
+          "avg_pct_error": 32.78,
+          "coverage": 1.0
+        },
+        "2022-Q3": {
+          "months": [
+            "2022-07",
+            "2022-08",
+            "2022-09"
+          ],
+          "avg_pct_error": 41.53,
+          "coverage": 1.0
+        },
+        "2022-Q4": {
+          "months": [
+            "2022-10",
+            "2022-11",
+            "2022-12"
+          ],
+          "avg_pct_error": 34.41,
+          "coverage": 1.0
+        },
+        "2023-Q1": {
+          "months": [
+            "2023-01",
+            "2023-02",
+            "2023-03"
+          ],
+          "avg_pct_error": 51.15,
+          "coverage": 0.3333
+        },
+        "2023-Q2": {
+          "months": [
+            "2023-04",
+            "2023-05",
+            "2023-06"
+          ],
+          "avg_pct_error": 50.76,
+          "coverage": 0.3333
+        },
+        "2023-Q3": {
+          "months": [
+            "2023-07",
+            "2023-08",
+            "2023-09"
+          ],
+          "avg_pct_error": 46.45,
+          "coverage": 0.6667
+        },
+        "2023-Q4": {
+          "months": [
+            "2023-10",
+            "2023-11",
+            "2023-12"
+          ],
+          "avg_pct_error": 33.6,
+          "coverage": 1.0
+        }
+      }
+    },
+    "variant_b_net_cashflow": {
+      "variant": "net_cashflow",
+      "per_month": [
+        {
+          "month": "2022-01",
+          "actual_net_cf": 223507.28,
+          "forecast_mean": 37168.71,
+          "forecast_std": 26601.57,
+          "forecast_p5": 0.0,
+          "forecast_p50": 34337.66,
+          "forecast_p95": 84710.65,
+          "within_90pct_ci": false,
+          "z_score": 7.005,
+          "abs_error": 186338.57,
+          "pct_error": 83.37
+        },
+        {
+          "month": "2022-02",
+          "actual_net_cf": 299114.95,
+          "forecast_mean": 38820.63,
+          "forecast_std": 26974.68,
+          "forecast_p5": 0.0,
+          "forecast_p50": 36517.4,
+          "forecast_p95": 87018.35,
+          "within_90pct_ci": false,
+          "z_score": 9.65,
+          "abs_error": 260294.32,
+          "pct_error": 87.02
+        },
+        {
+          "month": "2022-03",
+          "actual_net_cf": 249699.48,
+          "forecast_mean": 43253.14,
+          "forecast_std": 27570.93,
+          "forecast_p5": 0.0,
+          "forecast_p50": 40743.35,
+          "forecast_p95": 91901.54,
+          "within_90pct_ci": false,
+          "z_score": 7.488,
+          "abs_error": 206446.34,
+          "pct_error": 82.68
+        },
+        {
+          "month": "2022-04",
+          "actual_net_cf": 212169.46,
+          "forecast_mean": 37860.59,
+          "forecast_std": 26452.26,
+          "forecast_p5": 0.0,
+          "forecast_p50": 35507.48,
+          "forecast_p95": 85922.24,
+          "within_90pct_ci": false,
+          "z_score": 6.59,
+          "abs_error": 174308.87,
+          "pct_error": 82.16
+        },
+        {
+          "month": "2022-05",
+          "actual_net_cf": 223519.32,
+          "forecast_mean": 41628.48,
+          "forecast_std": 27641.26,
+          "forecast_p5": 0.0,
+          "forecast_p50": 38895.15,
+          "forecast_p95": 90567.18,
+          "within_90pct_ci": false,
+          "z_score": 6.58,
+          "abs_error": 181890.84,
+          "pct_error": 81.38
+        },
+        {
+          "month": "2022-06",
+          "actual_net_cf": 286856.97,
+          "forecast_mean": 41884.1,
+          "forecast_std": 27610.8,
+          "forecast_p5": 0.0,
+          "forecast_p50": 39814.52,
+          "forecast_p95": 91367.62,
+          "within_90pct_ci": false,
+          "z_score": 8.872,
+          "abs_error": 244972.87,
+          "pct_error": 85.4
+        },
+        {
+          "month": "2022-07",
+          "actual_net_cf": 255913.57,
+          "forecast_mean": 42175.91,
+          "forecast_std": 27709.27,
+          "forecast_p5": 0.0,
+          "forecast_p50": 39998.26,
+          "forecast_p95": 91092.91,
+          "within_90pct_ci": false,
+          "z_score": 7.714,
+          "abs_error": 213737.66,
+          "pct_error": 83.52
+        },
+        {
+          "month": "2022-08",
+          "actual_net_cf": 178672.84,
+          "forecast_mean": 26819.28,
+          "forecast_std": 23771.92,
+          "forecast_p5": 0.0,
+          "forecast_p50": 23079.6,
+          "forecast_p95": 71090.3,
+          "within_90pct_ci": false,
+          "z_score": 6.388,
+          "abs_error": 151853.56,
+          "pct_error": 84.99
+        },
+        {
+          "month": "2022-09",
+          "actual_net_cf": 350143.11,
+          "forecast_mean": 45633.33,
+          "forecast_std": 28272.86,
+          "forecast_p5": 576.81,
+          "forecast_p50": 43083.38,
+          "forecast_p95": 95396.54,
+          "within_90pct_ci": false,
+          "z_score": 10.77,
+          "abs_error": 304509.79,
+          "pct_error": 86.97
+        },
+        {
+          "month": "2022-10",
+          "actual_net_cf": 297718.9,
+          "forecast_mean": 45083.42,
+          "forecast_std": 27977.28,
+          "forecast_p5": 0.0,
+          "forecast_p50": 43104.73,
+          "forecast_p95": 95551.84,
+          "within_90pct_ci": false,
+          "z_score": 9.03,
+          "abs_error": 252635.48,
+          "pct_error": 84.86
+        },
+        {
+          "month": "2022-11",
+          "actual_net_cf": 332324.02,
+          "forecast_mean": 48254.48,
+          "forecast_std": 28530.49,
+          "forecast_p5": 3183.5,
+          "forecast_p50": 46065.85,
+          "forecast_p95": 98835.6,
+          "within_90pct_ci": false,
+          "z_score": 9.957,
+          "abs_error": 284069.54,
+          "pct_error": 85.48
+        },
+        {
+          "month": "2022-12",
+          "actual_net_cf": 381958.23,
+          "forecast_mean": 76850.35,
+          "forecast_std": 31842.92,
+          "forecast_p5": 29552.78,
+          "forecast_p50": 74079.29,
+          "forecast_p95": 133396.48,
+          "within_90pct_ci": false,
+          "z_score": 9.582,
+          "abs_error": 305107.88,
+          "pct_error": 79.88
+        },
+        {
+          "month": "2023-01",
+          "actual_net_cf": 321455.59,
+          "forecast_mean": 37168.71,
+          "forecast_std": 26601.57,
+          "forecast_p5": 0.0,
+          "forecast_p50": 34337.66,
+          "forecast_p95": 84710.65,
+          "within_90pct_ci": false,
+          "z_score": 10.687,
+          "abs_error": 284286.87,
+          "pct_error": 88.44
+        },
+        {
+          "month": "2023-02",
+          "actual_net_cf": 291642.54,
+          "forecast_mean": 38820.63,
+          "forecast_std": 26974.68,
+          "forecast_p5": 0.0,
+          "forecast_p50": 36517.4,
+          "forecast_p95": 87018.35,
+          "within_90pct_ci": false,
+          "z_score": 9.373,
+          "abs_error": 252821.91,
+          "pct_error": 86.69
+        },
+        {
+          "month": "2023-03",
+          "actual_net_cf": 354364.17,
+          "forecast_mean": 43253.14,
+          "forecast_std": 27570.93,
+          "forecast_p5": 0.0,
+          "forecast_p50": 40743.35,
+          "forecast_p95": 91901.54,
+          "within_90pct_ci": false,
+          "z_score": 11.284,
+          "abs_error": 311111.03,
+          "pct_error": 87.79
+        },
+        {
+          "month": "2023-04",
+          "actual_net_cf": 343324.16,
+          "forecast_mean": 37860.59,
+          "forecast_std": 26452.26,
+          "forecast_p5": 0.0,
+          "forecast_p50": 35507.48,
+          "forecast_p95": 85922.24,
+          "within_90pct_ci": false,
+          "z_score": 11.548,
+          "abs_error": 305463.57,
+          "pct_error": 88.97
+        },
+        {
+          "month": "2023-05",
+          "actual_net_cf": 283531.65,
+          "forecast_mean": 41628.48,
+          "forecast_std": 27641.26,
+          "forecast_p5": 0.0,
+          "forecast_p50": 38895.15,
+          "forecast_p95": 90567.18,
+          "within_90pct_ci": false,
+          "z_score": 8.752,
+          "abs_error": 241903.17,
+          "pct_error": 85.32
+        },
+        {
+          "month": "2023-06",
+          "actual_net_cf": 357939.24,
+          "forecast_mean": 41884.1,
+          "forecast_std": 27610.8,
+          "forecast_p5": 0.0,
+          "forecast_p50": 39814.52,
+          "forecast_p95": 91367.62,
+          "within_90pct_ci": false,
+          "z_score": 11.447,
+          "abs_error": 316055.14,
+          "pct_error": 88.3
+        },
+        {
+          "month": "2023-07",
+          "actual_net_cf": 330482.62,
+          "forecast_mean": 42175.91,
+          "forecast_std": 27709.27,
+          "forecast_p5": 0.0,
+          "forecast_p50": 39998.26,
+          "forecast_p95": 91092.91,
+          "within_90pct_ci": false,
+          "z_score": 10.405,
+          "abs_error": 288306.71,
+          "pct_error": 87.24
+        },
+        {
+          "month": "2023-08",
+          "actual_net_cf": 276468.13,
+          "forecast_mean": 26819.28,
+          "forecast_std": 23771.92,
+          "forecast_p5": 0.0,
+          "forecast_p50": 23079.6,
+          "forecast_p95": 71090.3,
+          "within_90pct_ci": false,
+          "z_score": 10.502,
+          "abs_error": 249648.85,
+          "pct_error": 90.3
+        },
+        {
+          "month": "2023-09",
+          "actual_net_cf": 248850.57,
+          "forecast_mean": 45633.33,
+          "forecast_std": 28272.86,
+          "forecast_p5": 576.81,
+          "forecast_p50": 43083.38,
+          "forecast_p95": 95396.54,
+          "within_90pct_ci": false,
+          "z_score": 7.188,
+          "abs_error": 203217.24,
+          "pct_error": 81.66
+        },
+        {
+          "month": "2023-10",
+          "actual_net_cf": 316210.36,
+          "forecast_mean": 45083.42,
+          "forecast_std": 27977.28,
+          "forecast_p5": 0.0,
+          "forecast_p50": 43104.73,
+          "forecast_p95": 95551.84,
+          "within_90pct_ci": false,
+          "z_score": 9.691,
+          "abs_error": 271126.94,
+          "pct_error": 85.74
+        },
+        {
+          "month": "2023-11",
+          "actual_net_cf": 305951.38,
+          "forecast_mean": 48254.48,
+          "forecast_std": 28530.49,
+          "forecast_p5": 3183.5,
+          "forecast_p50": 46065.85,
+          "forecast_p95": 98835.6,
+          "within_90pct_ci": false,
+          "z_score": 9.032,
+          "abs_error": 257696.9,
+          "pct_error": 84.23
+        },
+        {
+          "month": "2023-12",
+          "actual_net_cf": 377242.63,
+          "forecast_mean": 76850.35,
+          "forecast_std": 31842.92,
+          "forecast_p5": 29552.78,
+          "forecast_p50": 74079.29,
+          "forecast_p95": 133396.48,
+          "within_90pct_ci": false,
+          "z_score": 9.434,
+          "abs_error": 300392.28,
+          "pct_error": 79.63
+        }
+      ],
+      "coverage_90pct_ci": 0.0,
+      "avg_pct_error": 85.08,
+      "avg_abs_error": 252008.18,
+      "quarter_summary": {
+        "2022-Q1": {
+          "months": [
+            "2022-01",
+            "2022-02",
+            "2022-03"
+          ],
+          "avg_pct_error": 84.36,
+          "coverage": 0.0
+        },
+        "2022-Q2": {
+          "months": [
+            "2022-04",
+            "2022-05",
+            "2022-06"
+          ],
+          "avg_pct_error": 82.98,
+          "coverage": 0.0
+        },
+        "2022-Q3": {
+          "months": [
+            "2022-07",
+            "2022-08",
+            "2022-09"
+          ],
+          "avg_pct_error": 85.16,
+          "coverage": 0.0
+        },
+        "2022-Q4": {
+          "months": [
+            "2022-10",
+            "2022-11",
+            "2022-12"
+          ],
+          "avg_pct_error": 83.41,
+          "coverage": 0.0
+        },
+        "2023-Q1": {
+          "months": [
+            "2023-01",
+            "2023-02",
+            "2023-03"
+          ],
+          "avg_pct_error": 87.64,
+          "coverage": 0.0
+        },
+        "2023-Q2": {
+          "months": [
+            "2023-04",
+            "2023-05",
+            "2023-06"
+          ],
+          "avg_pct_error": 87.53,
+          "coverage": 0.0
+        },
+        "2023-Q3": {
+          "months": [
+            "2023-07",
+            "2023-08",
+            "2023-09"
+          ],
+          "avg_pct_error": 86.4,
+          "coverage": 0.0
+        },
+        "2023-Q4": {
+          "months": [
+            "2023-10",
+            "2023-11",
+            "2023-12"
+          ],
+          "avg_pct_error": 83.2,
+          "coverage": 0.0
+        }
+      }
+    }
+  },
+  "scenario_comparison": {
+    "base": {
+      "month1_mean": 40655.75,
+      "month3_cumulative_mean": 128886.56,
+      "probability_negative": 0.0,
+      "var_5pct": 51897.68,
+      "convergence_std": 495.262
+    },
+    "optimistic": {
+      "month1_mean": 50327.07,
+      "month3_cumulative_mean": 160532.61,
+      "probability_negative": 0.0,
+      "var_5pct": 83970.8,
+      "convergence_std": 483.4906
+    },
+    "stress": {
+      "month1_mean": 31756.36,
+      "month3_cumulative_mean": 99353.15,
+      "probability_negative": 0.0,
+      "var_5pct": 23271.73,
+      "convergence_std": 511.6999
+    }
+  },
+  "comparison_with_v2": {
+    "v2_training_months": 48,
+    "v3_training_months": 216,
+    "v2_test_months": 12,
+    "v3_test_months": 24,
+    "v2_revenue_mean": 242678.49,
+    "v3_revenue_mean": 175726.57,
+    "v2_revenue_std": 67430.4,
+    "v3_revenue_std": 110752.66,
+    "v2_coverage_a": 0.75,
+    "v3_coverage_a": 0.7917,
+    "v2_mape_a": 25.36,
+    "v3_mape_a": 41.11,
+    "v2_coverage_b": 0.0,
+    "v3_coverage_b": 0.0,
+    "v2_mape_b": 80.67,
+    "v3_mape_b": 85.08,
+    "v3_per_year_variant_a": {
+      "2022": {
+        "months": 12,
+        "coverage": 1.0,
+        "avg_mape": 36.72
+      },
+      "2023": {
+        "months": 12,
+        "coverage": 0.5833,
+        "avg_mape": 45.49
+      }
+    }
+  },
+  "total_elapsed_ms": 67189.11
+}

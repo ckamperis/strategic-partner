@@ -1,0 +1,260 @@
+{
+  "description": "Unit test coverage report for AI Strategic Partner prototype",
+  "framework": "pytest + pytest-cov",
+  "total_tests": 459,
+  "tests_passed": 459,
+  "tests_failed": 0,
+  "unit_tests": 446,
+  "integration_tests": 13,
+  "overall_coverage_pct": 89.3,
+  "total_statements": 2138,
+  "total_covered": 1909,
+  "total_missing": 229,
+  "per_module": [
+    {
+      "module": "data/",
+      "files": 1,
+      "lines": 0,
+      "covered": 0,
+      "missing": 0,
+      "coverage_pct": 100.0,
+      "test_count": 0
+    },
+    {
+      "module": "data/pipeline/",
+      "files": 4,
+      "lines": 236,
+      "covered": 191,
+      "missing": 45,
+      "coverage_pct": 80.9,
+      "test_count": 29
+    },
+    {
+      "module": "orchestrator/",
+      "files": 1,
+      "lines": 120,
+      "covered": 119,
+      "missing": 1,
+      "coverage_pct": 99.2,
+      "test_count": 23
+    },
+    {
+      "module": "picp/",
+      "files": 7,
+      "lines": 376,
+      "covered": 288,
+      "missing": 88,
+      "coverage_pct": 76.6,
+      "test_count": 66
+    },
+    {
+      "module": "pillars/",
+      "files": 1,
+      "lines": 0,
+      "covered": 0,
+      "missing": 0,
+      "coverage_pct": 100.0,
+      "test_count": 0
+    },
+    {
+      "module": "pillars/base",
+      "files": 1,
+      "lines": 38,
+      "covered": 38,
+      "missing": 0,
+      "coverage_pct": 100.0,
+      "test_count": 0
+    },
+    {
+      "module": "pillars/knowledge/",
+      "files": 4,
+      "lines": 243,
+      "covered": 232,
+      "missing": 11,
+      "coverage_pct": 95.5,
+      "test_count": 23
+    },
+    {
+      "module": "pillars/reasoning/",
+      "files": 4,
+      "lines": 270,
+      "covered": 248,
+      "missing": 22,
+      "coverage_pct": 91.9,
+      "test_count": 101
+    },
+    {
+      "module": "pillars/simulation/",
+      "files": 4,
+      "lines": 256,
+      "covered": 254,
+      "missing": 2,
+      "coverage_pct": 99.2,
+      "test_count": 102
+    },
+    {
+      "module": "pillars/trust/",
+      "files": 5,
+      "lines": 497,
+      "covered": 478,
+      "missing": 19,
+      "coverage_pct": 96.2,
+      "test_count": 87
+    },
+    {
+      "module": "utils/",
+      "files": 2,
+      "lines": 102,
+      "covered": 61,
+      "missing": 41,
+      "coverage_pct": 59.8,
+      "test_count": 15
+    }
+  ],
+  "test_distribution": [
+    {
+      "test_file": "tests/integration/test_full_pipeline.py",
+      "test_count": 13,
+      "module_tested": "integration",
+      "type": "integration"
+    },
+    {
+      "test_file": "tests/unit/test_audit.py",
+      "test_count": 15,
+      "module_tested": "pillars/trust",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_distributed_lock.py",
+      "test_count": 10,
+      "module_tested": "picp",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_distributions.py",
+      "test_count": 28,
+      "module_tested": "pillars/simulation",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_enforcer.py",
+      "test_count": 26,
+      "module_tested": "picp",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_explainer.py",
+      "test_count": 14,
+      "module_tested": "pillars/trust",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_heuristic_policy.py",
+      "test_count": 40,
+      "module_tested": "pillars/reasoning",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_hybrid_search.py",
+      "test_count": 11,
+      "module_tested": "pillars/knowledge",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_llm_client.py",
+      "test_count": 15,
+      "module_tested": "utils",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_monte_carlo.py",
+      "test_count": 31,
+      "module_tested": "pillars/simulation",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_orchestrator.py",
+      "test_count": 23,
+      "module_tested": "orchestrator",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_picp_bus.py",
+      "test_count": 9,
+      "module_tested": "picp",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_pipeline.py",
+      "test_count": 29,
+      "module_tested": "data/pipeline",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_rag.py",
+      "test_count": 6,
+      "module_tested": "pillars/knowledge",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_reasoning_pillar.py",
+      "test_count": 17,
+      "module_tested": "pillars/reasoning",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_scenario_parser.py",
+      "test_count": 28,
+      "module_tested": "pillars/simulation",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_shap_explainer.py",
+      "test_count": 17,
+      "module_tested": "pillars/trust",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_simulation_pillar.py",
+      "test_count": 15,
+      "module_tested": "pillars/simulation",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_skill_executor.py",
+      "test_count": 17,
+      "module_tested": "pillars/reasoning",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_skill_registry.py",
+      "test_count": 27,
+      "module_tested": "pillars/reasoning",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_trust_evaluator.py",
+      "test_count": 24,
+      "module_tested": "pillars/trust",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_trust_pillar.py",
+      "test_count": 17,
+      "module_tested": "pillars/trust",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_vector_clock.py",
+      "test_count": 21,
+      "module_tested": "picp",
+      "type": "unit"
+    },
+    {
+      "test_file": "tests/unit/test_vector_store.py",
+      "test_count": 6,
+      "module_tested": "pillars/knowledge",
+      "type": "unit"
+    }
+  ]
+}

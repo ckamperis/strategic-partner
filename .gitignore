@@ -1,0 +1,38 @@
+# Environment & secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Testing & coverage
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Node.js (used only for docx generation)
+node_modules/
+package.json
+package-lock.json
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated artifacts
+thesis_supplement.docx
+data/embedded/
+
+
+
+data/raw/cashflow_dataset.xlsx

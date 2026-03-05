@@ -1,0 +1,37 @@
+{
+  "total_revenue_gross": 15592618.97,
+  "total_revenue_net": 13393665.39,
+  "vat_rate": 0.24,
+  "collection_rate": 0.0014,
+  "credit_note_ratio": 0.0307,
+  "avg_payment_days": 0.0,
+  "seasonal_indices": [
+    0.9374,
+    0.9718,
+    1.0967,
+    0.7896,
+    0.9345,
+    0.9886,
+    1.0183,
+    0.695,
+    0.9435,
+    1.0805,
+    1.1723,
+    1.3718
+  ],
+  "date_range_start": "2019-01-02",
+  "date_range_end": "2023-12-29",
+  "customer_concentration": {
+    "top5_pct": 56.31,
+    "top10_pct": 70.27,
+    "top20_pct": 83.09,
+    "total_customers": 1538
+  },
+  "invoice_distribution": {
+    "mean": 870.95,
+    "median": 372.0,
+    "std": 1998.67,
+    "p95": 3100.0,
+    "count": 17903
+  }
+}

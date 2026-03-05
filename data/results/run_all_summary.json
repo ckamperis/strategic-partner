@@ -1,0 +1,37 @@
+{
+  "experiment_suite": "chapter5_experimental_evaluation",
+  "total_experiments": 1,
+  "succeeded": 1,
+  "failed": 0,
+  "total_elapsed_ms": 296.84,
+  "total_elapsed_min": 0.0,
+  "per_experiment": [
+    {
+      "index": 5,
+      "script": "exp5_trust_sensitivity.py",
+      "description": "Exp 5: Trust Score Sensitivity",
+      "success": true,
+      "error": "",
+      "elapsed_ms": 296.8
+    }
+  ],
+  "result_files": [
+    "codebase_stats.json",
+    "exp1_hybrid_alpha.json",
+    "exp1_statistical_analysis.json",
+    "exp2_failure_analysis.json",
+    "exp2_rag_iterations.json",
+    "exp3_picp_latency.json",
+    "exp4_monte_carlo.json",
+    "exp4_monte_carlo_v3.json",
+    "exp5_trust_sensitivity.json",
+    "exp6_end_to_end.json",
+    "exp6_routing_analysis.json",
+    "exp7_degradation.json",
+    "setup_distributions.json",
+    "setup_metrics.json",
+    "setup_pipeline_result.json",
+    "test_coverage.json",
+    "test_coverage_summary.json"
+  ]
+}

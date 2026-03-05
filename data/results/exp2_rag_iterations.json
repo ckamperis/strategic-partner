@@ -1,0 +1,258 @@
+{
+  "experiment": "exp2_rag_iterations",
+  "description": "Self-Correcting RAG iteration analysis with real LLM judge",
+  "config": {
+    "n_queries": 15,
+    "max_iterations": 3,
+    "threshold": 0.75,
+    "k": 5,
+    "n_chunks": 64
+  },
+  "summary": {
+    "avg_iterations": 1.87,
+    "avg_final_score": 0.7823,
+    "pct_above_threshold": 66.7,
+    "iteration_distribution": {
+      "1": 8,
+      "2": 1,
+      "3": 6
+    },
+    "avg_latency_ms": 5726.89
+  },
+  "per_query_results": [
+    {
+      "query_index": 0,
+      "query": "Ποιες είναι οι συνολικές πωλήσεις;",
+      "iterations_used": 1,
+      "final_score": 0.98,
+      "query_history": [
+        "Ποιες είναι οι συνολικές πωλήσεις;"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 2330.57,
+      "timing_ms": 2330.56,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 1,
+      "query": "Ποια είναι η εποχικότητα;",
+      "iterations_used": 2,
+      "final_score": 0.855,
+      "query_history": [
+        "Ποια είναι η εποχικότητα;",
+        "Εποχικότητα πωλήσεων και τάσεις"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 6100.75,
+      "timing_ms": 6100.72,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 2,
+      "query": "Πόσοι πελάτες υπάρχουν;",
+      "iterations_used": 3,
+      "final_score": 0.85,
+      "query_history": [
+        "Πόσοι πελάτες υπάρχουν;",
+        "Πόσοι συνολικά πελάτες υπάρχουν στην επιχείρηση;",
+        "Πόσοι συνολικά πελάτες υπάρχουν στην επιχείρηση; Συνολικός αριθμός πελατών."
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 10578.69,
+      "timing_ms": 10578.68,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 3,
+      "query": "Πρόβλεψη ταμειακών ροών για 3 μήνες",
+      "iterations_used": 1,
+      "final_score": 0.895,
+      "query_history": [
+        "Πρόβλεψη ταμειακών ροών για 3 μήνες"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 3021.53,
+      "timing_ms": 3021.47,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 4,
+      "query": "Ανάλυση κινδύνου ρευστότητας",
+      "iterations_used": 1,
+      "final_score": 0.983,
+      "query_history": [
+        "Ανάλυση κινδύνου ρευστότητας"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 3730.33,
+      "timing_ms": 3730.31,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 5,
+      "query": "Τάση εσόδων και εξόδων",
+      "iterations_used": 1,
+      "final_score": 0.8,
+      "query_history": [
+        "Τάση εσόδων και εξόδων"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 2353.85,
+      "timing_ms": 2353.83,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 6,
+      "query": "Ποιοι πελάτες αποτελούν τον κύριο κύκλο εργασιών;",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_history": [
+        "Ποιοι πελάτες αποτελούν τον κύριο κύκλο εργασιών;"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 2665.01,
+      "timing_ms": 2664.98,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 7,
+      "query": "Ποιο είναι το ποσοστό πιστωτικών τιμολογίων;",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_history": [
+        "Ποιο είναι το ποσοστό πιστωτικών τιμολογίων;"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 5566.59,
+      "timing_ms": 5566.56,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 8,
+      "query": "Πώς επηρεάζει η εποχικότητα τον κίνδυνο ελλειμμάτων;",
+      "iterations_used": 3,
+      "final_score": 0.7,
+      "query_history": [
+        "Πώς επηρεάζει η εποχικότητα τον κίνδυνο ελλειμμάτων;",
+        "Πώς επηρεάζει η εποχικότητα τις πωλήσεις και τα ελλείμματα;",
+        "Πώς επηρεάζει η εποχικότητα τις πωλήσεις και τα ελλείμματα σε διαφορετικές περιόδους;"
+      ],
+      "above_threshold": false,
+      "total_latency_ms": 8154.74,
+      "timing_ms": 8154.69,
+      "n_chunks_returned": 5,
+      "warnings": [
+        "Max iterations (3) reached. Best score: 0.70 (threshold: 0.75)"
+      ]
+    },
+    {
+      "query_index": 9,
+      "query": "Σύγκριση του δεύτερου τριμήνου με το πρώτο σε επίπεδο ταμειακών ροών",
+      "iterations_used": 3,
+      "final_score": 0.705,
+      "query_history": [
+        "Σύγκριση του δεύτερου τριμήνου με το πρώτο σε επίπεδο ταμειακών ροών",
+        "Σύγκριση ταμειακών ροών δεύτερου τριμήνου με πρώτο τριμήνου",
+        "Σύγκριση ταμειακών ροών δεύτερου τριμήνου με πρώτο τριμήνου 2022"
+      ],
+      "above_threshold": false,
+      "total_latency_ms": 9828.4,
+      "timing_ms": 9828.39,
+      "n_chunks_returned": 5,
+      "warnings": [
+        "Max iterations (3) reached. Best score: 0.70 (threshold: 0.75)"
+      ]
+    },
+    {
+      "query_index": 10,
+      "query": "Ποια η σχέση μεταξύ αριθμού πελατών και μέσου τιμολογίου;",
+      "iterations_used": 3,
+      "final_score": 0.71,
+      "query_history": [
+        "Ποια η σχέση μεταξύ αριθμού πελατών και μέσου τιμολογίου;",
+        "Ποια η μέση τιμή τιμολογίου ανά πελάτη;",
+        "Μέση τιμή τιμολογίου ανά πελάτη για τα έτη 2019-2023"
+      ],
+      "above_threshold": false,
+      "total_latency_ms": 8706.02,
+      "timing_ms": 8706.01,
+      "n_chunks_returned": 5,
+      "warnings": [
+        "Max iterations (3) reached. Best score: 0.71 (threshold: 0.75)"
+      ]
+    },
+    {
+      "query_index": 11,
+      "query": "Τι δείχνει η κατανομή τιμολογίων για τη σταθερότητα εσόδων;",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_history": [
+        "Τι δείχνει η κατανομή τιμολογίων για τη σταθερότητα εσόδων;"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 2353.54,
+      "timing_ms": 2353.52,
+      "n_chunks_returned": 5,
+      "warnings": []
+    },
+    {
+      "query_index": 12,
+      "query": "Ποιος μήνας έχει τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής;",
+      "iterations_used": 3,
+      "final_score": 0.557,
+      "query_history": [
+        "Ποιος μήνας έχει τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής;",
+        "Ποιοι μήνες έχουν τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής;",
+        "Ποιοι μήνες έχουν τον μεγαλύτερο κίνδυνο αρνητικής ταμειακής ροής και γιατί;"
+      ],
+      "above_threshold": false,
+      "total_latency_ms": 8774.68,
+      "timing_ms": 8774.62,
+      "n_chunks_returned": 5,
+      "warnings": [
+        "Max iterations (3) reached. Best score: 0.56 (threshold: 0.75)"
+      ]
+    },
+    {
+      "query_index": 13,
+      "query": "Πώς θα μπορούσε να βελτιωθεί η είσπραξη;",
+      "iterations_used": 3,
+      "final_score": 0.7,
+      "query_history": [
+        "Πώς θα μπορούσε να βελτιωθεί η είσπραξη;",
+        "Ποιες είναι οι στρατηγικές για τη βελτίωση της είσπραξης;",
+        "Στρατηγικές για τη βελτίωση της είσπραξης και της διαχείρισης πιστώσεων"
+      ],
+      "above_threshold": false,
+      "total_latency_ms": 8636.09,
+      "timing_ms": 8636.04,
+      "n_chunks_returned": 5,
+      "warnings": [
+        "Max iterations (3) reached. Best score: 0.70 (threshold: 0.75)"
+      ]
+    },
+    {
+      "query_index": 14,
+      "query": "Ανάλυση συγκέντρωσης πελατών και κινδύνου εξάρτησης",
+      "iterations_used": 1,
+      "final_score": 0.75,
+      "query_history": [
+        "Ανάλυση συγκέντρωσης πελατών και κινδύνου εξάρτησης"
+      ],
+      "above_threshold": true,
+      "total_latency_ms": 3102.51,
+      "timing_ms": 3102.5,
+      "n_chunks_returned": 5,
+      "warnings": []
+    }
+  ],
+  "total_elapsed_ms": 155209.24
+}

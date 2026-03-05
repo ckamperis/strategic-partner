@@ -1,0 +1,25 @@
+{
+  "revenue_mean": 259876.98282000003,
+  "revenue_std": 72242.34905802268,
+  "seasonal_factors": [
+    0.9374,
+    0.9718,
+    1.0967,
+    0.7896,
+    0.9345,
+    0.9886,
+    1.0183,
+    0.695,
+    0.9435,
+    1.0805,
+    1.1723,
+    1.3718
+  ],
+  "expense_ratio_mean": 0.72,
+  "expense_ratio_std": 0.05,
+  "collection_delay_mean": 52.0,
+  "collection_delay_std": 15.0,
+  "credit_note_probability": 1.0,
+  "credit_note_ratio": 0.030697459544511526,
+  "customer_loss_rate": 0.02
+}

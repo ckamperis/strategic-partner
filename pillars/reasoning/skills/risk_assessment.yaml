@@ -1,0 +1,84 @@
+# Risk Assessment Skill Definition
+# Reference: Thesis Section 3.3.2 — Reasoning Pillar, Skill: Risk Assessment
+#
+# Analyses ERP data for financial risk indicators including credit risk,
+# customer concentration risk, and cashflow volatility.
+
+name: risk_assessment
+description: >
+  Evaluate financial risks based on ERP data: credit exposure,
+  customer concentration, payment delays, and cashflow volatility.
+version: "1.0"
+query_type: risk_assessment
+
+required_context:
+  - monthly_summaries
+  - customer_analysis
+  - risk_metrics
+
+system_prompt: >
+  You are a financial risk analyst for Greek SMEs. You evaluate credit risk,
+  customer concentration, payment behaviour, and cashflow volatility using
+  ERP transaction data. Be specific and quantitative. Output valid JSON.
+
+prompt_template: |
+  Based on the following ERP data context, assess the financial risks.
+
+  === ERP DATA CONTEXT ===
+  {context}
+  === END CONTEXT ===
+
+  User Query: {query}
+
+  Produce a JSON response with exactly these fields:
+  {{
+    "overall_risk_level": "high|medium|low",
+    "risk_score": <number between 0.0 and 1.0>,
+    "risk_categories": [
+      {{
+        "category": "category_name",
+        "level": "high|medium|low",
+        "score": <number>,
+        "description": "explanation",
+        "indicators": ["indicator1", "indicator2"]
+      }}
+    ],
+    "mitigation_suggestions": ["suggestion1", "suggestion2"],
+    "data_quality_warnings": ["warning1", "warning2"],
+    "narrative": "2-3 sentence risk summary in Greek"
+  }}
+
+output_schema:
+  type: object
+  required:
+    - overall_risk_level
+    - risk_score
+    - risk_categories
+    - narrative
+  properties:
+    overall_risk_level:
+      type: string
+      enum: [high, medium, low]
+    risk_score:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+    risk_categories:
+      type: array
+      items:
+        type: object
+    mitigation_suggestions:
+      type: array
+      items:
+        type: string
+    data_quality_warnings:
+      type: array
+      items:
+        type: string
+    narrative:
+      type: string
+
+parameters:
+  model_tier: fast
+  temperature: 0.0
+  max_retries: 2
