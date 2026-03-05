@@ -36,3 +36,4 @@ data/embedded/
 
 
 data/raw/cashflow_dataset.xlsx
+.venv/
